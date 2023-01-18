@@ -10,6 +10,10 @@
       "@utils/*": ["./utils/*"],
       "@constants/*": ["./constants/*"],
       "@styles/*": ["./styles/*"],
+      "@config/*": ["./config/*"],
+      "@models/*": ["./models/*"],
+      "@controllers/*": ["./controllers/*"],
+      "@middleware/*": ["./middleware/*"]
     }
   }
 }
