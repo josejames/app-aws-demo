@@ -36,7 +36,7 @@ const Footer = () => (
     </>
 )
 
-export default function MainLayout ({ children }) {
+export default function LandingLayout ({ children }) {
     return (
         <>
             <Head>
