@@ -8,11 +8,11 @@ import InnerContainer from '@layouts/InnerContainer'
 
 const Header = () => (
     <>
-        <header>
+        <header className='w-full bg-black fixed top-0 shadow-2xl shadow-black'>
             <InnerContainer>
-                <nav className='h-24 flex justify-between items-center'>
-                    <div className='relative w-56 h-10'>
-                        <Image src='/assets/images/logo-global.png' alt='Mavie global' fill />
+                <nav className='h-16 md:h-24 flex justify-between items-center'>
+                    <div className='relative w-36 md:w-56 h-10'>
+                        <Image src='/assets/images/logo-global.png' alt='Mavie global' fill className='object-contain' />
                     </div>
                     <Button>join the waitlist</Button>
                 </nav>

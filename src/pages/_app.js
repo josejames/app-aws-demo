@@ -23,7 +23,7 @@ const EestiPro = localFonts({
 
 export default function App ({ Component, pageProps }) {
     return (
-        <div className={`${EestiPro.variable} font-sans`}>
+        <div className={`${EestiPro.variable} font-sans relative`}>
             <Component {...pageProps} />
         </div>
     )
