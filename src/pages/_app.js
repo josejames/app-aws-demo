@@ -1,12 +1,30 @@
-// Layout
-import MainLayout from '@layouts/MainLayout'
 // Styles
 import '@styles/globals.sass'
+// Fonts
+import localFonts from '@next/font/local'
 
-export default function App({ Component, pageProps }) {
+const EestiPro = localFonts({
+    src: [
+        {
+            path: '../../public/assets/fonts/GTEestiProText-UltraLight.woff',
+            weight: '200'
+        },
+        {
+            path: '../../public/assets/fonts/GTEestiProText-Light.woff',
+            weight: '300'
+        },
+        {
+            path: '../../public/assets/fonts/GTEestiProText-Regular.woff',
+            weight: '400'
+        }
+    ],
+    variable: '--font-eesti'
+})
+
+export default function App ({ Component, pageProps }) {
     return (
-        <MainLayout>
+        <div className={`${EestiPro.variable} font-sans`}>
             <Component {...pageProps} />
-        </MainLayout>
+        </div>
     )
 }

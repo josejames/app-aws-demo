@@ -1,31 +1,12 @@
 // Common
 import Head from 'next/head'
 import Image from 'next/image'
-// Fonts
-import localFonts from '@next/font/local'
+// Layout
 import InnerContainer from '@layouts/InnerContainer'
-
-const EestiPro = localFonts({
-    src: [
-        {
-            path: '../../../public/assets/fonts/GTEestiProText-UltraLight.woff',
-            weight: '200'
-        },
-        {
-            path: '../../../public/assets/fonts/GTEestiProText-Light.woff',
-            weight: '300'
-        },
-        {
-            path: '../../../public/assets/fonts/GTEestiProText-Regular.woff',
-            weight: '400'
-        },
-    ],
-    variable: '--font-eesti'
-})
 
 const Header = () => (
     <>
-        <header className={`${EestiPro.variable} font-sans py-12`}>
+        <header className='py-12'>
             <InnerContainer>
                 <nav className='flex justify-between items-center'>
                     <div className='flex items-center gap-24'>
@@ -45,7 +26,7 @@ const Header = () => (
 
 const Footer = () => (
     <>
-        <footer className={`${EestiPro.variable} font-sans`}>
+        <footer className=''>
             <InnerContainer>
                 <p>Footer</p>
             </InnerContainer>
@@ -53,7 +34,7 @@ const Footer = () => (
     </>
 )
 
-export default function MainLayout({ children }) {
+export default function MainLayout ({ children }) {
     return (
         <>
             <Head>
@@ -63,7 +44,7 @@ export default function MainLayout({ children }) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Header />
-            <main className={`${EestiPro.variable} font-sans`}>
+            <main className=''>
                 <InnerContainer>
                     { children }
                 </InnerContainer>

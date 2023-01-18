@@ -1,6 +1,12 @@
+// Layout
+import MainLayout from '@layouts/MainLayout'
 
-export default function LandingPage() {
+export default function LandingPage () {
     return (
-        <div>LandingPage</div>
+        <>
+            <MainLayout>
+                <div>LandingPage</div>
+            </MainLayout>
+        </>
     )
 }
