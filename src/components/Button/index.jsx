@@ -1,5 +1,5 @@
 // Common
-import Link from "next/link";
+import Link from 'next/link'
 
 const Button = ({ children }) => {
     return (

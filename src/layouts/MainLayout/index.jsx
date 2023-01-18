@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 // Layout
 import InnerContainer from '@layouts/InnerContainer'
+import Button from '@components/Button'
 
 const Header = () => (
     <>
@@ -18,6 +19,7 @@ const Header = () => (
                             <li>About</li>
                         </ul>
                     </div>
+                    <Button>join the waitlist</Button>
                 </nav>
             </InnerContainer>
         </header>
