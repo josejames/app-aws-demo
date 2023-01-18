@@ -7,6 +7,14 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['var(--font-eesti)']
+            },
+            colors: {
+                'brand-cyan': 'var(--brand-cyan)',
+                'brand-pink': 'var(--brand-pink)',
+                'brand-gray': 'var(--brand-gray)'
+            },
+            backgroundImage: {
+                'main-gradient': 'var(--main-gradient)'
             }
         }
     },

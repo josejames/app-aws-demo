@@ -1,7 +1,7 @@
 const InnerContainer = ({ children }) => (
     <>
         <div className='w-full h-full flex justify-center'>
-            <div className='w-full max-w-6xl px-4'>
+            <div className='w-full max-w-6xl px-4 md:px-6'>
                 { children }
             </div>
         </div>

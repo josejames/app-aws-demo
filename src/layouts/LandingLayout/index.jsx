@@ -1,23 +1,20 @@
 // Common
 import Head from 'next/head'
 import Image from 'next/image'
+// Components
+import Button from '@components/Button'
 // Layout
 import InnerContainer from '@layouts/InnerContainer'
 
 const Header = () => (
     <>
-        <header className='py-12'>
+        <header className='w-full bg-black fixed top-0 shadow-2xl shadow-black'>
             <InnerContainer>
-                <nav className='flex justify-between items-center'>
-                    <div className='flex items-center gap-24'>
-                        <div className='relative w-56 h-10'>
-                            <Image src='/assets/images/logo-global.png' alt='Mavie global' fill />
-                        </div>
-                        <ul className='flex items-center gap-12 font-extralight'>
-                            <li>Intro</li>
-                            <li>About</li>
-                        </ul>
+                <nav className='h-16 md:h-24 flex justify-between items-center'>
+                    <div className='relative w-36 md:w-56 h-10'>
+                        <Image src='/assets/images/logo-global.png' alt='Mavie global' fill className='object-contain' />
                     </div>
+                    <Button>join the waitlist</Button>
                 </nav>
             </InnerContainer>
         </header>
@@ -34,7 +31,7 @@ const Footer = () => (
     </>
 )
 
-export default function MainLayout ({ children }) {
+export default function LandingLayout ({ children }) {
     return (
         <>
             <Head>
