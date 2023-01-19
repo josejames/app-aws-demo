@@ -1,4 +1,5 @@
 // Layout
+import Counter from '@components/Landing/Counter/Counter'
 import LandingLayout from '@layouts/LandingLayout'
 // Components
 import Hero from '@components/landing/Hero'
@@ -8,6 +9,7 @@ export default function LandingPage() {
         <>
             <LandingLayout>
                 <Hero />
+                <Counter />
             </LandingLayout>
         </>
     )
