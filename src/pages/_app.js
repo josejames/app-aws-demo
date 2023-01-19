@@ -2,8 +2,9 @@
 import '@styles/globals.sass'
 // Fonts
 import localFonts from '@next/font/local'
+import { Inter } from '@next/font/google'
 
-const EestiPro = localFonts({
+const eestiPro = localFonts({
     src: [
         {
             path: '../../public/assets/fonts/GTEestiProText-UltraLight.woff',
@@ -21,9 +22,14 @@ const EestiPro = localFonts({
     variable: '--font-eesti'
 })
 
+const inter = Inter({
+    variable: '--font-inter',
+    subsets: ['latin']
+})
+
 export default function App ({ Component, pageProps }) {
     return (
-        <div className={`${EestiPro.variable} font-sans relative`}>
+        <div className={`${eestiPro.variable} ${inter.variable} font-eesti relative`}>
             <Component {...pageProps} />
         </div>
     )
