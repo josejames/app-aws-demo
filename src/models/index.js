@@ -2,6 +2,7 @@ import Affinity from '@models/affinity'
 import Comment from '@models/comment'
 import Post from '@models/post'
 import User from '@models/user'
+import Newsletter from '@models/newsletter'
 
 Comment.belongsTo(User, { foreignKey: 'userId' })
 User.hasMany(Comment, { foreignKey: 'userId' })
@@ -16,5 +17,6 @@ export {
     Comment,
     User,
     Post,
-    Affinity
+    Affinity,
+    Newsletter
 }
