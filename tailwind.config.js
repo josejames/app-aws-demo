@@ -6,7 +6,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['var(--font-eesti)'],
+                eesti: ['var(--font-eesti)'],
                 inter: ['var(--font-inter)']
             },
             colors: {

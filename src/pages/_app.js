@@ -29,7 +29,7 @@ const inter = Inter({
 
 export default function App ({ Component, pageProps }) {
     return (
-        <div className={`${eestiPro.variable} ${inter.variable} font-sans relative`}>
+        <div className={`${eestiPro.variable} ${inter.variable} font-eesti relative`}>
             <Component {...pageProps} />
         </div>
     )
