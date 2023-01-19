@@ -1,5 +1,5 @@
 export default function getEventDate() {
-    const date = new Date(2023, 0, 19)
+    const date = new Date(2023, 1, 19)
     const destOffset = 4
     const localOffset = -date.getTimezoneOffset() / 60
     const dif = destOffset - localOffset
