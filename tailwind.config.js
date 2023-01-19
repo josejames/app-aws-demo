@@ -6,7 +6,8 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['var(--font-eesti)']
+                sans: ['var(--font-eesti)'],
+                inter: ['var(--font-inter)']
             },
             colors: {
                 'brand-cyan': 'var(--brand-cyan)',
