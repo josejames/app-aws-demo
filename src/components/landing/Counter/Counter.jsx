@@ -1,15 +1,31 @@
 import Countdown from '@components/Countdown/Countdown'
 import getEventDate from '@utils/constants/eventDate'
 import { networks } from '@utils/constants/networks'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './styles.module.sass'
 export default function Counter() {
     return <section className={styles.container}>
         <div className={styles.bg}>
-            <div className={styles.gradientCircle}>
+            <motion.div className={styles.gradientCircle}
+                transition={{ duration: 1 }}
+                initial={
+                    {
+                        width: '100%',
+                        paddingTop: '100%',
+                        background: 'linear-gradient(90deg, #fff 40%, #fff 55%)'
+                    }
+                }
+                whileInView={
+                    {
+                        width: '500%',
+                        paddingTop: '500%',
+                        background: 'linear-gradient(90deg, #51C9E4 40%, #CF6597 55%)'
+                    }
+                }>
 
-            </div>
+            </motion.div>
             <svg
                 viewBox="0 0 260 100" width="100%" height="100%">
                 <text
@@ -17,7 +33,7 @@ export default function Counter() {
                     stroke="#ffffffa0"
                     strokeDasharray="3"
                     strokeWidth="0.3"
-                    fontFamily='inherit'
+                    fontFamily='ubuntu'
                     fontWeight="bold"
                     fontSize="100" textAnchor='middle' x="50%" y="50%" dominantBaseline="central">
                     1103
@@ -37,7 +53,15 @@ export default function Counter() {
                     <span>{network.icon}</span>
                 </Link>)}
             </div>
-            <div className={styles.footer}>
+            <motion.div className={styles.footer}
+                transition={{ duration: 1 }}
+                initial={{
+                    borderRadius: '0 0 0 0'
+                }}
+                whileInView={{
+                    borderRadius: '100% 100% 0 0'
+                }}>
+
                 <div className={styles.logoContainer}>
                     <Image src={'/assets/images/logo.svg'}
                         fill={true}
@@ -50,7 +74,7 @@ export default function Counter() {
                 <div className={styles.copyright}>
                     Copyright © 2022 MavVie.global All Rights Reserved
                 </div>
-            </div>
+            </motion.div>
         </div>
     </section>
 }
