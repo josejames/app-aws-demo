@@ -14,7 +14,9 @@ module.exports = {
                 'brand-gray': 'var(--brand-gray)'
             },
             backgroundImage: {
-                'main-gradient': 'var(--main-gradient)'
+                'main-gradient': 'var(--main-gradient)',
+                
+                'news': "url('/assets/images/landing/news.png')"
             }
         }
     },
