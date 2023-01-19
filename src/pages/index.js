@@ -1,11 +1,13 @@
 // Layout
 import LandingLayout from '@layouts/LandingLayout'
+// Components
+import Hero from '@components/landing/Hero'
 
 export default function LandingPage() {
     return (
         <>
             <LandingLayout>
-                <div>LandingPage</div>
+                <Hero />
             </LandingLayout>
         </>
     )
