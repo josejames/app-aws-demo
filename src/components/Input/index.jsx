@@ -1,3 +1,4 @@
+import { HiArrowLongRight } from 'react-icons/hi2'
 
 // Input Component receives
 export default function Input ({ action = () => { }, placeholder = 'Enter Your Email.' }) {
@@ -17,9 +18,9 @@ const Button = () => {
     return (
         <div className='absolute right-5 bottom-5 bg-main-gradient w-10 h-7 flex justify-center items-center rounded-full text-black'>
             <button
-                className='h-full w-full'
+                className='h-full w-full flex items-center justify-center font-extrabold'
             >
-                {'->'}
+                <HiArrowLongRight/>
             </button>
         </div>
     )
