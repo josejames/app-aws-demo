@@ -42,9 +42,7 @@ export default function LandingLayout ({ children }) {
             </Head>
             <Header />
             <main className=''>
-                <InnerContainer>
-                    { children }
-                </InnerContainer>
+                { children }
             </main>
             <Footer />
         </>
