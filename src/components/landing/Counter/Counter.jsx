@@ -33,7 +33,7 @@ export default function Counter() {
                     stroke="#ffffffa0"
                     strokeDasharray="3"
                     strokeWidth="0.3"
-                    fontFamily='ubuntu'
+                    fontFamily='inherit'
                     fontWeight="bold"
                     fontSize="100" textAnchor='middle' x="50%" y="50%" dominantBaseline="central">
                     1103
@@ -41,17 +41,19 @@ export default function Counter() {
             </svg>
         </div>
         <div className={styles.dataContainer}>
-            <h2 className={styles.counterContainer}>
-                <Countdown targetDate={getEventDate()}/>
-            </h2>
-            <div className={styles.message}>
-                See you soon
-            </div>
+            <div className={styles.dataBody}>
+                <h2 className={styles.counterContainer}>
+                    <Countdown targetDate={getEventDate()}/>
+                </h2>
+                <div className={styles.message}>
+                    See you soon
+                </div>
 
-            <div className={styles.networks}>
-                {networks.map(network => <Link key={network.name} href={network.href}>
-                    <span>{network.icon}</span>
-                </Link>)}
+                <div className={styles.networks}>
+                    {networks.map(network => <Link key={network.name} href={network.href}>
+                        <span>{network.icon}</span>
+                    </Link>)}
+                </div>
             </div>
             <motion.div className={styles.footer}
                 transition={{ duration: 1 }}

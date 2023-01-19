@@ -1,4 +1,5 @@
-import { FaFacebookF, FaYoutube, FaInstagramSquare, FaTelegramPlane } from 'react-icons/fa'
+import { FaFacebookF, FaYoutube, FaTelegramPlane } from 'react-icons/fa'
+import { AiFillInstagram } from 'react-icons/ai'
 const networks = [
     {
         name: 'facebook',
@@ -12,7 +13,7 @@ const networks = [
     },
     {
         name: 'instagram',
-        icon: <FaInstagramSquare/>,
+        icon: <AiFillInstagram/>,
         href: 'https://instagram.com'
     },
     {
