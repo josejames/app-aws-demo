@@ -1,5 +1,5 @@
 // Layout
-import Counter from '@components/Landing/Counter/Counter'
+import Counter from '@components/landing/Counter/Counter'
 import LandingLayout from '@layouts/LandingLayout'
 // Components
 import Hero from '@components/landing/Hero'
