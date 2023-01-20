@@ -25,8 +25,11 @@ export default function Hero() {
     })
 
     useMotionValueEvent(scrollY, 'change', (latest) => {
+        // Relative offset is a formula to get how much the section has left the viewport, from 0 to 100.
         const relativeOffset = latest * 100 / heroRef.current.offsetHeight
+        // Scale is a formula to compute how much the logo should increase.
         const scale = 1 + Math.pow(relativeOffset, 2) * 0.008
+        console.log({ relativeOffset, scale })
         setLogoScale({
             scale,
             opacity: (scale > 1.6) ? 0 : 1
