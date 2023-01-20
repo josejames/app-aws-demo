@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 const NewsLetter = () => {
     return (
-        <section className="flex flex-col w-full min-h-screen bg-news bg-cover items-center justify-center text-center mt-32">
+        <section id='newsletter' className="flex flex-col w-full min-h-screen bg-news bg-cover items-center justify-center text-center mt-32">
             <div>
                 <motion.h3
                     transition={{ duration: 1 }}

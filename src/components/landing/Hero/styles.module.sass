@@ -9,19 +9,20 @@
         background-repeat: no-repeat
 
     .content
-        @apply w-full h-full flex flex-col justify-evenly items-center capitalize pt-40 relative
+        @apply w-full h-full flex flex-col justify-evenly items-center capitalize xl:pt-40 relative
 
         .mainContent
-            @apply w-full flex flex-col justify-center items-center z-10
+            @apply w-full flex flex-col justify-center items-center relative z-10
 
             .littleHeading
                 @apply italic
 
             .counter
-                @apply text-5xl font-light
+                @apply w-full text-2xl md:text-4xl xl:text-5xl text-center font-light
 
             h1
-                @apply text-[11rem] font-medium text-center
+                @apply text-[6.5rem] leading-tight xl:text-[11rem] font-medium text-center
+                transition: opacity 1s ease
 
         .logo
             @apply w-full h-full absolute z-0
@@ -30,14 +31,6 @@
             img
                 @apply object-contain
 
-        .logoAnimation
-            animation: scale 1s ease-in
-            animation-fill-mode: forwards
-
-            @keyframes scale
-                100%
-                    transform: scale(50)
-
         .containerLinks
             @apply flex gap-10 z-10
 
@@ -45,4 +38,4 @@
                 @apply flex flex-col justify-center items-center
 
             a
-                @apply flex items-center gap-4 text-2xl font-light
+                @apply flex items-center gap-4 text-lg md:text-2xl font-light
