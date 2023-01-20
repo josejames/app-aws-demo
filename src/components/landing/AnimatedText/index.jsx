@@ -30,15 +30,15 @@ export default function AnimatedText () {
     const y = useParallax(scrollYProgress, 200)
 
     return (
-        <section className= "relative z-0 h-fit min-h-screen">
+        <section className= "relative top-56 md:top-0 z-0 h-fit min-h-screen">
             <VideoBg ref={ref}/>
             <InnerContainer>
                 <div
-                    className= "relative md:px-32 px-5 z-10 top-10 "
+                    className= "relative md:px-32 px-5 z-10 top-10 flex flex-col gap-10"
                     style={{ y }}
                 >
                     <motion.h2
-                        className= "text-[120px]  font-light italic"
+                        className= " md:text-[4vw] text-6xl  font-light italic"
                         transition={{ duration: 1.3 }}
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
@@ -49,7 +49,7 @@ export default function AnimatedText () {
                         </ColoredText>
                     </motion.h2>
                     <motion.p
-                        className= "text-[4rem] md:text-[3.5vw] font-light leading-tight "
+                        className= "text-3xl md:text-[3.5vw] font-light leading-tight "
                         transition={{ duration: 1.3 }}
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
