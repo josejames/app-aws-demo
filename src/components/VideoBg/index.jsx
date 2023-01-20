@@ -19,6 +19,7 @@ export default function VideoBg ({ props }) {
             autoPlay
             muted
             loop
+            playsInLine
             className={styles.video}
         >
             <source src="/assets/videos/Background-video.mp4" type="video/mp4" />
