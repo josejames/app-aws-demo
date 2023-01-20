@@ -14,6 +14,7 @@ export default function VideoBg ({ props }) {
         className='absolute'
     >
         <div className={styles.overlay}></div>
+        <div className={styles.gradientOverlay}></div>
         <video
             autoPlay
             muted
