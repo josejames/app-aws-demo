@@ -1,5 +1,5 @@
 import nextConnect from 'next-connect'
-import dbConnection from '@middlewares/dbConnection'
+import dbConnection from '@middlewares/dbconnection'
 
 // eslint-disable-next-line no-extend-native
 BigInt.prototype.toJSON = function() {
