@@ -7,10 +7,10 @@ const handler = apiHandler({
     return response.send(newsletters)
 }).post(async (request, response) => {
     const { email } = request.body
-    const newsletter = await NewsLetter.create({
+    const newsletter = await NewsLetter.upsert({
         email
     })
-    return response.json(newsletter)
+    return response.json(newsletter[0])
 })
 
 export default handler

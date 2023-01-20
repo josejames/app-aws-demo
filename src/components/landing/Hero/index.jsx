@@ -1,37 +1,43 @@
 // Common
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 // Components
-import ColoredText from '@components/ColoredText/ColoredText'
+import ColoredText from '@components/ColoredText'
 import Countdown from '@components/Countdown/Countdown'
 // Layout
 import InnerContainer from '@layouts/InnerContainer'
+// Framer Motion
+import { useScroll, useMotionValueEvent } from 'framer-motion'
 // Icons
 import { IoPlayCircleOutline, IoChevronForwardOutline } from 'react-icons/io5'
 // Utils
 import getEventDate from '@utils/constants/eventDate'
 // Styles
 import styles from './styles.module.sass'
-// Framer Motion
-import { useScroll, useMotionValueEvent } from 'framer-motion'
 
 export default function Hero() {
+    const heroRef = useRef()
     const { scrollY } = useScroll()
-    const [logoScale, setLogoScale] = useState(1)
-    const [opacity, setOpacity] = useState(1)
+    const [logoScale, setLogoScale] = useState({
+        scale: 1,
+        opacity: 1
+    })
 
     useMotionValueEvent(scrollY, 'change', (latest) => {
-        setLogoScale(1 + Math.pow(latest, 4) * 0.000001)
-        if (1 + Math.pow(latest, 4) * 0.00000001 > 1.1) {
-            setOpacity(0)
-        } else {
-            setOpacity(1)
-        }
+        // Relative offset is a formula to get how much the section has left the viewport, from 0 to 100.
+        const relativeOffset = latest * 100 / heroRef.current.offsetHeight
+        // Scale is a formula to compute how much the logo should increase.
+        const scale = 1 + Math.pow(relativeOffset, 2) * 0.008
+        console.log({ relativeOffset, scale })
+        setLogoScale({
+            scale,
+            opacity: (scale > 1.6) ? 0 : 1
+        })
     })
 
     return (
-        <section className={styles.container}>
+        <section ref={heroRef} className={styles.container}>
             <InnerContainer>
                 <div className={styles.content}>
                     <div className={styles.mainContent}>
@@ -43,7 +49,7 @@ export default function Hero() {
                         </div>
                         <h1>Own your future</h1>
                     </div>
-                    <div style={{ transform: `scale(${logoScale})`, opacity }} className={styles.logo}>
+                    <div style={{ transform: `scale(${logoScale.scale})`, opacity: `${logoScale.opacity}` }} className={styles.logo}>
                         <Image src='/assets/images/landing/hero-logo.png' alt='MaVie logo' priority fill />
                     </div>
                     <div className={styles.containerLinks}>
