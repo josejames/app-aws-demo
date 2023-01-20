@@ -73,7 +73,7 @@ export default function Hero() {
                             <ColoredText>
                                 MaVie Dubai
                             </ColoredText>
-                            <Link href='https://www.youtube.com/watch?v=CEH1sc1dnTQ'>Watch the event <IoPlayCircleOutline /></Link>
+                            <Link href='https://www.youtube.com/watch?v=CEH1sc1dnTQ' target='_blank'>Watch the event <IoPlayCircleOutline /></Link>
                         </div>
                         <div>
                             <ColoredText>
