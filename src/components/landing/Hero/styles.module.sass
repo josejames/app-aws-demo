@@ -1,0 +1,48 @@
+.container
+    @apply w-full h-screen min-h-screen
+    &::before
+        @apply w-full h-screen absolute top-0 left-0 mix-blend-hard-light
+        content: ''
+        background-image: url('/assets/images/landing/hero-bg.png')
+        background-size: auto 90%
+        background-position: center bottom
+        background-repeat: no-repeat
+
+    .content
+        @apply w-full h-full flex flex-col justify-evenly items-center capitalize pt-40 relative
+
+        .mainContent
+            @apply w-full flex flex-col justify-center items-center z-10
+
+            .littleHeading
+                @apply italic
+
+            .counter
+                @apply text-5xl font-light
+
+            h1
+                @apply text-[11rem] font-medium text-center
+
+        .logo
+            @apply w-full h-full absolute z-0
+            transition: opacity 1s ease
+
+            img
+                @apply object-contain
+
+        .logoAnimation
+            animation: scale 1s ease-in
+            animation-fill-mode: forwards
+
+            @keyframes scale
+                100%
+                    transform: scale(50)
+
+        .containerLinks
+            @apply flex gap-10 z-10
+
+            div
+                @apply flex flex-col justify-center items-center
+
+            a
+                @apply flex items-center gap-4 text-2xl font-light
