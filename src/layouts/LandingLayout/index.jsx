@@ -8,7 +8,7 @@ import InnerContainer from '@layouts/InnerContainer'
 
 const Header = () => (
     <>
-        <header className='w-full bg-black fixed top-0 z-50 shadow-2xl shadow-black'>
+        <header className='w-full bg-black fixed top-0 z-40 shadow-2xl shadow-black'>
             <InnerContainer>
                 <nav className='h-16 md:h-24 flex justify-between items-center'>
                     <div className='relative w-36 md:w-48 h-10'>
@@ -21,15 +21,15 @@ const Header = () => (
     </>
 )
 
-const Footer = () => (
-    <>
-        <footer className=''>
-            <InnerContainer>
-                <p>Footer</p>
-            </InnerContainer>
-        </footer>
-    </>
-)
+// const Footer = () => (
+//     <>
+//         <footer className=''>
+//             <InnerContainer>
+//                 <p>Footer</p>
+//             </InnerContainer>
+//         </footer>
+//     </>
+// )
 
 export default function LandingLayout ({ children }) {
     return (
@@ -41,10 +41,10 @@ export default function LandingLayout ({ children }) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Header />
-            <main className=' overflow-hidden'>
+            <main className=' overflow-clip'>
                 { children }
             </main>
-            <Footer />
+            {/* <Footer /> */}
         </>
     )
 }

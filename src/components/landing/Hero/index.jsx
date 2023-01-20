@@ -19,20 +19,34 @@ import styles from './styles.module.sass'
 export default function Hero() {
     const heroRef = useRef()
     const { scrollY } = useScroll()
-    const [logoScale, setLogoScale] = useState({
+    const [logoAnimation, setLogoAnimation] = useState({
         scale: 1,
         opacity: 1
+    })
+    const [titleAnimation, setTitleAnimation] = useState({
+        scale: 1,
+        opacity: 1
+    })
+    const [countdownAnimation, setCountdownAnimation] = useState({
+        scale: 1
     })
 
     useMotionValueEvent(scrollY, 'change', (latest) => {
         // Relative offset is a formula to get how much the section has left the viewport, from 0 to 100.
         const relativeOffset = latest * 100 / heroRef.current.offsetHeight
-        // Scale is a formula to compute how much the logo should increase.
-        const scale = 1 + Math.pow(relativeOffset, 2) * 0.008
-        console.log({ relativeOffset, scale })
-        setLogoScale({
-            scale,
-            opacity: (scale > 1.6) ? 0 : 1
+        // Scale is a formula to compute how much the elements should increase.
+        const logoScale = 1 + Math.pow(relativeOffset, 2) * 0.008
+        const titleScale = 1 + relativeOffset * 0.008
+        setLogoAnimation({
+            scale: logoScale,
+            opacity: (logoScale > 1.6) ? 0 : 1
+        })
+        setTitleAnimation({
+            scale: titleScale,
+            opacity: (titleScale > 1.3) ? 0 : 1
+        })
+        setCountdownAnimation({
+            scale: 0.5
         })
     })
 
@@ -42,14 +56,14 @@ export default function Hero() {
                 <div className={styles.content}>
                     <div className={styles.mainContent}>
                         <span className={styles.littleHeading}>Dubai grand event</span>
-                        <div className={styles.counter}>
+                        <div style={{ transform: `scale(${countdownAnimation.scale})` }} className={styles.counter}>
                             <ColoredText>
                                 <Countdown targetDate={getEventDate()} />
                             </ColoredText>
                         </div>
-                        <h1>Own your future</h1>
+                        <h1 style={{ transform: `scale(${titleAnimation.scale})`, opacity: `${titleAnimation.opacity}` }}>Own your future</h1>
                     </div>
-                    <div style={{ transform: `scale(${logoScale.scale})`, opacity: `${logoScale.opacity}` }} className={styles.logo}>
+                    <div style={{ transform: `scale(${logoAnimation.scale})`, opacity: `${logoAnimation.opacity}` }} className={styles.logo}>
                         <Image src='/assets/images/landing/hero-logo.png' alt='MaVie logo' priority fill />
                     </div>
                     <div className={styles.containerLinks}>

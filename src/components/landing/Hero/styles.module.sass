@@ -12,16 +12,17 @@
         @apply w-full h-full flex flex-col justify-evenly items-center capitalize pt-40 relative
 
         .mainContent
-            @apply w-full flex flex-col justify-center items-center z-10
+            @apply w-full flex flex-col justify-center items-center relative
 
             .littleHeading
                 @apply italic
 
             .counter
-                @apply text-5xl font-light
+                @apply text-5xl font-light sticky top-0 z-50
 
             h1
-                @apply text-[11rem] font-medium text-center
+                @apply text-[11rem] font-medium text-center z-20
+                transition: opacity 1s ease
 
         .logo
             @apply w-full h-full absolute z-0
@@ -29,14 +30,6 @@
 
             img
                 @apply object-contain
-
-        .logoAnimation
-            animation: scale 1s ease-in
-            animation-fill-mode: forwards
-
-            @keyframes scale
-                100%
-                    transform: scale(50)
 
         .containerLinks
             @apply flex gap-10 z-10
