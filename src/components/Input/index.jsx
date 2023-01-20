@@ -6,7 +6,7 @@ export default function Input ({ action = () => { }, placeholder = 'Enter Your E
         <div className='relative w-fit'>
             <input
                 type='email'
-                className='bg-black w-72 border border-white px-5 pr-16 py-5 h-[4rem] rounded-full relative font-thin'
+                className='bg-black w-72 border border-white px-5 pr-20 py-5 h-[4rem] rounded-full relative font-thin placeholder:text-[#f0f0f06e] placeholder:text-sm'
                 placeholder={placeholder}
             />
             <Button />

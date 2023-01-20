@@ -49,7 +49,7 @@ export default function AnimatedText () {
                         </ColoredText>
                     </motion.h2>
                     <motion.p
-                        className= "text-[4rem] md:text-[3.5vw] leading-tight "
+                        className= "text-[4rem] md:text-[3.5vw] font-light leading-tight "
                         transition={{ duration: 1.3 }}
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}

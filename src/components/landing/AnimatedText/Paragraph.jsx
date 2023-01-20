@@ -27,7 +27,7 @@ export default function Paragraph ({ children, props }) {
         {...props}
         ref = {ref}
         style={{
-            color: isInView ? 'white' : 'gray'
+            color: isInView ? 'white' : '#515051'
         }}
         className='ease-in-out duration-500'
     >
