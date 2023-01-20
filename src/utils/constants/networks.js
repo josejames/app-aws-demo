@@ -1,24 +1,25 @@
-import { FaFacebookF, FaYoutube, FaInstagramSquare, FaTelegramPlane } from 'react-icons/fa'
+import { FaFacebookF, FaYoutube, FaTelegramPlane } from 'react-icons/fa'
+import { AiFillInstagram } from 'react-icons/ai'
 const networks = [
     {
         name: 'facebook',
         icon: <FaFacebookF/>,
-        href: 'https://facebook.com'
+        href: 'https://www.facebook.com/mavie.global/'
     },
     {
         name: 'youtube',
         icon: <FaYoutube/>,
-        href: 'https://youtube.com'
+        href: 'https://www.youtube.com/channel/UCZ-PSGJ1VCjSYTvZabCmjQQ'
     },
     {
         name: 'instagram',
-        icon: <FaInstagramSquare/>,
+        icon: <AiFillInstagram/>,
         href: 'https://instagram.com'
     },
     {
         name: 'telegram',
         icon: <FaTelegramPlane/>,
-        href: 'https://telegram.com'
+        href: 'https://t.me/mavie_news'
     }
 ]
 

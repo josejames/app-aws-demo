@@ -8,15 +8,15 @@ const Post = sequelize.define('Post', {
     },
     slug: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     image: {
         type: DataTypes.STRING,
         allowNull: true
     },
     content: {
-        type: DataTypes.TEXT,
-        unique: true
+        type: DataTypes.TEXT
     },
     tags: {
         type: DataTypes.STRING
