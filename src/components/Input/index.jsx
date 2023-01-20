@@ -7,7 +7,6 @@ export default function Input({
     placeholder = 'Enter Your Email.'
 }) {
     const [cambio, setCambio] = useState(false)
-
     const handleSubmit = () => {
         setCambio(true)
     }
@@ -30,7 +29,7 @@ export default function Input({
                                 <HiArrowLongRight />
                             </button>
                         </div>
-                    </div>}
-        </div>
-    )
+                    </div>
+            }
+        </div>)
 }
