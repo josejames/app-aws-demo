@@ -33,7 +33,6 @@ const NewsLetter = () => {
                 transition={{ duration: 1 }}
                 initial={{ y: 150, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}className="my-16">
-                <p className="my-2 italic">join the waitlist</p>
                 <Input />
             </motion.div>
         </section>
