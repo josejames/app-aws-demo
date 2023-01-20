@@ -21,16 +21,6 @@ const Header = () => (
     </>
 )
 
-// const Footer = () => (
-//     <>
-//         <footer className=''>
-//             <InnerContainer>
-//                 <p>Footer</p>
-//             </InnerContainer>
-//         </footer>
-//     </>
-// )
-
 export default function LandingLayout ({ children }) {
     return (
         <>
@@ -44,7 +34,6 @@ export default function LandingLayout ({ children }) {
             <main className=' overflow-clip'>
                 { children }
             </main>
-            {/* <Footer /> */}
         </>
     )
 }

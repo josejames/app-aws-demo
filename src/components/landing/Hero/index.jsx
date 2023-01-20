@@ -9,6 +9,8 @@ import Countdown from '@components/Countdown/Countdown'
 import InnerContainer from '@layouts/InnerContainer'
 // Framer Motion
 import { useScroll, useMotionValueEvent } from 'framer-motion'
+// Scroll
+import { Link as ScrollLink } from 'react-scroll'
 // Icons
 import { IoPlayCircleOutline, IoChevronForwardOutline } from 'react-icons/io5'
 // Utils
@@ -46,7 +48,7 @@ export default function Hero() {
             opacity: (titleScale > 1.3) ? 0 : 1
         })
         setCountdownAnimation({
-            scale: 0.5
+            scale: titleScale
         })
     })
 
@@ -71,13 +73,20 @@ export default function Hero() {
                             <ColoredText>
                                 MaVie Dubai
                             </ColoredText>
-                            <Link href='#'>Watch the event <IoPlayCircleOutline /></Link>
+                            <Link href='https://www.youtube.com/watch?v=CEH1sc1dnTQ'>Watch the event <IoPlayCircleOutline /></Link>
                         </div>
                         <div>
                             <ColoredText>
                                 MaVie x Ultron
                             </ColoredText>
-                            <Link href='#'>The next steps <IoChevronForwardOutline /></Link>
+                            <ScrollLink
+                                to='newsletter'
+                                smooth
+                                spy={true}
+                                className='cursor-pointer'
+                            >
+                                The next steps <IoChevronForwardOutline />
+                            </ScrollLink>
                         </div>
                     </div>
                 </div>
