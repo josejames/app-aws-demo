@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 const Terms = () => {
     return (
         <section className="flex flex-col justify-center items-center min-h-screen my-48">
@@ -51,7 +52,7 @@ const Terms = () => {
                 <p className='my-2'>L. Violation of any state or federal laws or regulations.</p>
                 <p className='my-2'>M. Competing with the COMPANY’s products or services directly or indirectly through association with another business or through your own personal efforts.</p>
                 <p className='my-2'>N. Aggressive or abusive language, behaviour or treatment or any inappropriate behaviour toward any COMPANY employee, founder or another COMPANY Independent Distributor.</p>
-                <p className='my-2'>O. Unjustified resale of the COMPANY 's products, retention and unjustified fundraising or transfer of funds raised from purchases, payments for participation in courses or other services sold by the company to persons other than the COMPANY.</p>
+                <p className='my-2'>O. Unjustified resale of the COMPANY{"'"}s products, retention and unjustified fundraising or transfer of funds raised from purchases, payments for participation in courses or other services sold by the company to persons other than the COMPANY.</p>
                 <p className='my-2'>Insurance The COMPANY does not extend coverage under any of its polices or products to Independent Distributors. If you use your personal property (such as your car or computer, home, etc.) for business use, such property may not be covered for loss or damage.</p>
                 <p className='my-2'>Recruiting Cross-line recruiting: An Independent Distributor may not solicit an individual or entity that has been previously sponsored by another MAVIE Independent Distributor (or that is considering joining The COMPANY and being sponsored by another Independent Distributors) to join their MAVIE business as their direct enrollee. The Independent Distributor may not solicit an MAVIE Independent Distributor or entity to join another network marketing opportunity offered by another company during the term of their MAVIE Independent Distributorship and for a period of one year after unless it is partially owned or officially associated with MAVIE. Violation of this company policy may result in immediate termination and revocation of any commissions earned! Independent Distributor Eligibility By entering into this agreement you represent and warrant that you: (a) are of legal age under your local law and at least 18 years old (applicable for natural persons); (b) you have full power and authority to enter into this agreement and (c) your MAVIE account have not been previously suspended or removed.</p>
                 <p className='my-2'>Our Platform is not directed or allowed to any person in any jurisdiction where (by reason of that person's nationality, residence or otherwise) the availability of the Platform is or may be prohibited. Due to legal restrictions and/or our business discretion you are not allowed to access our Platform if you are located in, under the control of, resident, habitant or citizen of the countries not listed within the Territory (see definition above) or if you are a resident, citizen or if you are located in any other jurisdiction in which applicable laws prohibit you to access our Platform (“Restricted Use Areas”).</p>
@@ -132,19 +133,19 @@ const Terms = () => {
                             <li>special gifts – i.e., gifts provided by the Organizer after purchasing products from a selected category or products of a particular value.</li>
                         </ul>
                         <p className='my-2'>This promotion includes: all members buying NFT Staking HUBs will gather extra Ultron stars sharing 5% of Metaverse Profit. On any purchase of a Staking HUB – NFT you will get:</p>
-                            <ul>
-                                <li>NFT 100 USDT – 1 star</li>
-                                <li>NFT 300 USDT – 1 star</li>
-                                <li>NFT 500 USDT – 1 star</li>
-                                <li>NFT 1.500 USDT – 25 stars</li>
-                                <li>NFT 5.000 USDT – 150 stars</li>
-                                <li>NFT 12.500 USDT – 750 stars</li>
-                                <li>NFT 30.000 USDT – 4000 stars</li>
-                                <li>NFT 100.000 USDT – 25.000 stars</li>
-                                <li>NFT 300.000 USDT – 150.000 stars</li>
-                                <li>- If the Staking HUB auto stake locking period in a minimum of 6 months, you will get X2 of Stars</li>
-                                <li>- If the Staking HUB auto stake locking period in a minimum of 12 months, you will get X5 of Stars.</li>
-                            </ul>
+                        <ul>
+                            <li>NFT 100 USDT – 1 star</li>
+                            <li>NFT 300 USDT – 1 star</li>
+                            <li>NFT 500 USDT – 1 star</li>
+                            <li>NFT 1.500 USDT – 25 stars</li>
+                            <li>NFT 5.000 USDT – 150 stars</li>
+                            <li>NFT 12.500 USDT – 750 stars</li>
+                            <li>NFT 30.000 USDT – 4000 stars</li>
+                            <li>NFT 100.000 USDT – 25.000 stars</li>
+                            <li>NFT 300.000 USDT – 150.000 stars</li>
+                            <li>- If the Staking HUB auto stake locking period in a minimum of 6 months, you will get X2 of Stars</li>
+                            <li>- If the Staking HUB auto stake locking period in a minimum of 12 months, you will get X5 of Stars.</li>
+                        </ul>
                         <p className='my-2'>Each special offer has a timeframe provided in its announcement. The Organizer reserves the right to cancel any special offer at any time if necessary.</p>
                         <p className='my-2'>The duration of the promotion is undefined and will be announced in due time, A special offer can be used at any time during its period.</p>
                         <p className='my-2'>Participation in special offers is free of charge and voluntary. Participation in special offers is open to a natural person, legal person, or organizational unit not having legal personality, to whom legal capacity is granted by the act (hereinafter referred to as a "Participant").</p>

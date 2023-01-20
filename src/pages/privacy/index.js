@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 const Privacy = () => {
     return (
         <section className="flex flex-col justify-center items-center min-h-screen my-48">
