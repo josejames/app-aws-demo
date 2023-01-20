@@ -13,7 +13,7 @@ export default function AnimatedText () {
 
     return (
         <section
-            className= "relative z-0 top-24 h-auto overflow-hidden "
+            className= "relative z-0 top-24 overflow-hidden h-auto min-h-screen"
         >
             <InnerContainer>
                 <VideoBg/>
