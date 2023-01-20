@@ -16,7 +16,6 @@ module.exports = {
             },
             backgroundImage: {
                 'main-gradient': 'var(--main-gradient)',
-                
                 'news': "url('/assets/images/landing/news.png')"
             }
         }

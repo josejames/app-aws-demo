@@ -4,12 +4,12 @@ const networks = [
     {
         name: 'facebook',
         icon: <FaFacebookF/>,
-        href: 'https://facebook.com'
+        href: 'https://www.facebook.com/mavie.global/'
     },
     {
         name: 'youtube',
         icon: <FaYoutube/>,
-        href: 'https://youtube.com'
+        href: 'https://www.youtube.com/channel/UCZ-PSGJ1VCjSYTvZabCmjQQ'
     },
     {
         name: 'instagram',
@@ -19,7 +19,7 @@ const networks = [
     {
         name: 'telegram',
         icon: <FaTelegramPlane/>,
-        href: 'https://telegram.com'
+        href: 'https://t.me/mavie_news'
     }
 ]
 
