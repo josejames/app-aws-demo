@@ -5,9 +5,11 @@ import { useEffect, useRef, useState } from 'react'
 import styles from './styles.module.sass'
 const variants = {
     visible: progress => ({
-        y: -progress * 200,
+        y: -progress * 300,
         rotate: -progress * 90,
-        scale: 1 + Math.sin(progress * Math.PI) / 2
+        scale: 1 + Math.sin(progress * Math.PI) / 2,
+        opacity: 1 - Math.sin((progress * progress) * Math.PI / 2)
+
     })
 }
 export default function AnimatedGear() {

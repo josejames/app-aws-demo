@@ -11,6 +11,7 @@ import {
     useScroll,
     useTransform
 } from 'framer-motion'
+import AnimatedGear from '@components/AnimatedGear/AnimatedGear'
 
 function useParallax(value, distance) {
     return useTransform(value, [0, 1], [-distance, distance])
@@ -61,6 +62,7 @@ export default function AnimatedText () {
                     </motion.p>
                 </div>
 
+                <AnimatedGear/>
             </InnerContainer>
 
         </section>)

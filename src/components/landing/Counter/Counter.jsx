@@ -1,4 +1,4 @@
-import AnimatedGear from '@components/AnimatedGear/AnimatedGear'
+// import AnimatedGear from '@components/AnimatedGear/AnimatedGear'
 import Countdown from '@components/Countdown/Countdown'
 import getEventDate from '@utils/constants/eventDate'
 import { networks } from '@utils/constants/networks'
@@ -8,7 +8,7 @@ import Link from 'next/link'
 import styles from './styles.module.sass'
 export default function Counter() {
     return <section className={styles.container}>
-        <AnimatedGear/>
+        {/* <AnimatedGear/> */}
         <div className={styles.bg}>
             <motion.div className={styles.gradientCircle}
                 transition={{ duration: 1 }}
