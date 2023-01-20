@@ -16,7 +16,10 @@ module.exports = {
             },
             backgroundImage: {
                 'main-gradient': 'var(--main-gradient)',
-                'news': "url('/assets/images/landing/news.png')"
+                news: "url('/assets/images/landing/news.png')"
+            },
+            animation: {
+                'spin-slow': 'spin 3s linear infinite'
             }
         }
     },
