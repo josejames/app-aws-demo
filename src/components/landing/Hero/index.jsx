@@ -23,7 +23,7 @@ export default function Hero() {
 
     useMotionValueEvent(scrollY, 'change', (latest) => {
         setLogoScale(1 + Math.pow(latest, 4) * 0.000001)
-        if (1 + Math.pow(latest, 4) * 0.0000001 > 1.1) {
+        if (1 + Math.pow(latest, 4) * 0.00000001 > 1.1) {
             setOpacity(0)
         } else {
             setOpacity(1)
