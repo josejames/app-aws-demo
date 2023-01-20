@@ -30,7 +30,7 @@ export default function AnimatedText () {
     const y = useParallax(scrollYProgress, 200)
 
     return (
-        <section className= "relative top-56 md:top-0 z-0 h-fit min-h-screen">
+        <section className= "relative z-0 h-fit min-h-screen">
             <VideoBg ref={ref}/>
             <InnerContainer>
                 <div
