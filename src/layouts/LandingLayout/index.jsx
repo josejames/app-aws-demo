@@ -8,11 +8,11 @@ import InnerContainer from '@layouts/InnerContainer'
 
 const Header = () => (
     <>
-        <header className='w-full bg-black fixed top-0 shadow-2xl shadow-black'>
+        <header className='w-full bg-black fixed top-0 z-50 shadow-2xl shadow-black'>
             <InnerContainer>
                 <nav className='h-16 md:h-24 flex justify-between items-center'>
-                    <div className='relative w-36 md:w-56 h-10'>
-                        <Image src='/assets/images/logo-global.png' alt='Mavie global' fill className='object-contain' />
+                    <div className='relative w-36 md:w-48 h-10'>
+                        <Image src='/assets/images/logo-global.png' alt='Mavie global' priority fill className='object-contain' />
                     </div>
                     <Button>join the waitlist</Button>
                 </nav>
@@ -41,7 +41,7 @@ export default function LandingLayout ({ children }) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Header />
-            <main className=''>
+            <main className=' overflow-hidden'>
                 { children }
             </main>
             <Footer />
