@@ -13,7 +13,7 @@ export default function AnimatedText () {
 
     return (
         <section
-            className= "relative z-0 top-24 h-auto overflow-hidden "
+            className= "relative z-0 top-24 h-auto min-h-screen overflow-hidden "
             initial="offscreen"
             whileInView="onscreen"
         >
