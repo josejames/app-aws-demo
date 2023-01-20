@@ -17,6 +17,14 @@ const eestiPro = localFonts({
         {
             path: '../../public/assets/fonts/GTEestiProText-Regular.woff',
             weight: '400'
+        },
+        {
+            path: '../../public/assets/fonts/GTEestiProText-Medium.woff',
+            weight: '500'
+        },
+        {
+            path: '../../public/assets/fonts/GTEestiProText-Bold.woff',
+            weight: '600'
         }
     ],
     variable: '--font-eesti'
