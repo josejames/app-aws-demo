@@ -14,7 +14,7 @@ const networks = [
     {
         name: 'instagram',
         icon: <AiFillInstagram/>,
-        href: 'https://instagram.com'
+        href: 'https://www.instagram.com/mavie.global/'
     },
     {
         name: 'telegram',
