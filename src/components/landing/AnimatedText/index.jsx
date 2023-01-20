@@ -1,9 +1,10 @@
 // Components
 import VideoBg from '@components/VideoBg'
 import ColoredText from '@components/ColoredText'
+import Paragraph from './Paragraph'
 import InnerContainer from '@layouts/InnerContainer'
 // React
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 // Framer-Motion
 import {
     motion,
@@ -32,7 +33,7 @@ export default function AnimatedText () {
             <VideoBg ref={ref}/>
             <InnerContainer>
                 <div
-                    className= "relative px-32 z-10 top-10 "
+                    className= "relative md:px-32 px-5 z-10 top-10 "
                     style={{ y }}
                 >
                     <motion.h2
@@ -63,38 +64,4 @@ export default function AnimatedText () {
             </InnerContainer>
 
         </section>)
-}
-
-const Paragraph = ({ children, props }) => {
-    const ref = useRef(null)
-    const [isInView, setIsInView] = useState(false)
-
-    // To listen for scroll events, and use the getBoundingClientRect() method to check if the component is in the center of the screen.
-    useEffect(() => {
-        const handleScroll = () => {
-            const windowHeight = window.innerHeight
-            const componentTop = ref.current.getBoundingClientRect().top
-            const componentBottom = ref.current.getBoundingClientRect().bottom
-            if (
-                (componentTop < windowHeight / 2) && (componentBottom > windowHeight / 2)
-            ) {
-                setIsInView(true)
-            } else {
-                setIsInView(false)
-            }
-        }
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [ref])
-
-    return <span
-        {...props}
-        ref = {ref}
-        style={{
-            color: isInView ? 'white' : 'gray'
-        }}
-        className='ease-in-out duration-500'
-    >
-        {children}
-    </span>
 }
