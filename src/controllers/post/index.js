@@ -37,7 +37,19 @@ const retrieveSingle = async (id) => {
         include: [
             {
                 model: Comment,
-                as: 'comments'
+                as: 'comments',
+                where: {
+                    level: 1
+                },
+                include: [
+                    {
+                        model: User,
+                        as: 'user',
+                        attributes: {
+                            exclude: ['password']
+                        }
+                    }
+                ]
             },
             {
                 model: User,
