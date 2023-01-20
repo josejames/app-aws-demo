@@ -2,46 +2,39 @@ import Comment from '@models/comment'
 import Post from '@models/post'
 import User from '@models/user'
 
-const create = async(user, body) => {
-    const postBody = {
-        title: body.title,
-        slug: body.slug,
-        image: body.image,
+const create = async(userId, postId, body) => {
+    const commentBody = {
         content: body.content,
-        userId: user.id
+        postId,
+        userId
     }
-    const post = await Post.create(postBody)
-    return post
+    const comment = await Comment.create(commentBody)
+    return comment
 }
 
-const retrieve = async (offset, limit) => {
-    const posts = await Post.findAll({
+const retrieve = async (postId, offset, limit) => {
+    const comments = await Comment.findAll({
         order: ['id'],
-        offset,
-        limit,
+        where: {
+            postId
+        },
         include: [
             {
-                model: User,
-                as: 'user',
-                attributes: {
-                    exclude: ['password', 'createdAt', 'updatedAt', 'isAdmin']
-                }
+                model: User
             }
         ]
     })
-    return posts
+    return comments
 }
 
 const retrieveSingle = async (id) => {
     const post = await Post.findByPk(id, {
         include: [
             {
-                model: Comment,
-                as: 'comments'
+                model: Comment
             },
             {
                 model: User,
-                as: 'user',
                 attributes: {
                     exclude: ['password', 'createdAt', 'updatedAt', 'isAdmin']
                 }

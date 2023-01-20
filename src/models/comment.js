@@ -3,8 +3,8 @@ import sequelize from '@config/database'
 
 const Comment = sequelize.define('Comment', {
     status: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.INTEGER,
+        defaultValue: 0
     },
     content: {
         type: DataTypes.TEXT,
@@ -12,18 +12,18 @@ const Comment = sequelize.define('Comment', {
     },
     likes: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        defaultValue: 0
     },
     dislikes: {
         type: DataTypes.INTEGER,
-        unique: true
+        defaultValue: 0
     },
     parentId: {
         type: DataTypes.INTEGER
     },
     level: {
         type: DataTypes.SMALLINT,
-        defaultValue: 0
+        defaultValue: 1
     }
 })
 
