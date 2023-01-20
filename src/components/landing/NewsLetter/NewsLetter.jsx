@@ -1,3 +1,4 @@
+import AnimatedGear from '@components/AnimatedGear/AnimatedGear'
 import Input from '@components/Input'
 
 const NewsLetter = () => {
@@ -15,6 +16,7 @@ const NewsLetter = () => {
                 <p className="my-2 italic">join the waitlist</p>
                 <Input/>
             </div>
+            <AnimatedGear/>
         </section>
     )
 }
