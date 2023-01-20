@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 // Components
-import ColoredText from '@components/ColoredText/ColoredText'
+import ColoredText from '@components/ColoredText'
 import Countdown from '@components/Countdown/Countdown'
 // Layout
 import InnerContainer from '@layouts/InnerContainer'

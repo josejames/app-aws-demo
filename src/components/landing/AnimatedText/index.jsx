@@ -1,28 +1,31 @@
 import VideoBg from '@components/VideoBg'
+import ColoredText from '@components/ColoredText'
 import InnerContainer from '@layouts/InnerContainer'
 import { useEffect, useRef, useState } from 'react'
 
 export default function AnimatedText () {
-    const paragraphs = [
+    const PARAGRAPHS = [
         'MaVie empowers anyone with access to life changing opportunities, unconditional support of a business-driven community and an open path to financial freedom.',
         ' There is an extraordinary potential of a community that aligns and pulls together.',
         ' MaVie believes that people can achieve greatness when they share values of trust and unity,',
         ' and work towards a common goal by utilizing the power of many.'
-
     ]
 
     return (
         <section
-            className= "relative z-0 top-24 overflow-hidden h-auto min-h-screen"
+            className= "relative z-0 top-24  h-[200vh] min-h-screen"
         >
             <InnerContainer>
                 <VideoBg/>
-                <div className= "relative z-10">
+                <div className= "relative px-32 z-10">
                     <h2 className= "text-[120px]  font-light italic">
-                        All for One.
+                        All for{' '}
+                        <ColoredText>
+                            One.
+                        </ColoredText>
                     </h2>
                     <p className= "text-[4rem] md:text-[3.5vw] leading-tight ">
-                        {paragraphs.map((element, id) => {
+                        { PARAGRAPHS.map((element, id) => {
                             return <Paragraph key={id}>
                                 {element}
                             </Paragraph>
@@ -39,7 +42,7 @@ const Paragraph = ({ children, props }) => {
     const ref = useRef(null)
     const [isInView, setIsInView] = useState(false)
 
-    // to listen for scroll events, and use the getBoundingClientRect() method to check if the component is in the center of the screen.
+    // To listen for scroll events, and use the getBoundingClientRect() method to check if the component is in the center of the screen.
     useEffect(() => {
         const handleScroll = () => {
             const windowHeight = window.innerHeight
@@ -61,8 +64,8 @@ const Paragraph = ({ children, props }) => {
         {...props}
         ref = {ref}
         style={{
-            color: isInView ? 'white' : 'gray',
-            fontWeight: isInView ? '400' : '300'
+            color: isInView ? 'white' : 'gray'
+            // fontWeight: isInView ? '400' : '300'
         }}
         className='ease-in-out duration-300'
     >
