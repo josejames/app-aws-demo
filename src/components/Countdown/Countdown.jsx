@@ -20,7 +20,7 @@ const formatDiffTime = diff => {
     }
 }
 
-export default function Countdown ({ targetDate }) {
+const Countdown = ({ targetDate }) => {
     const [timeLeft, setTimeLeft] = useState(0)
     const formattedTimeleft = useMemo(() => {
         return formatDiffTime(timeLeft)
@@ -40,3 +40,6 @@ export default function Countdown ({ targetDate }) {
         }
     </div>
 }
+
+Countdown.displayName = 'Countdown'
+export default Countdown

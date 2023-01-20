@@ -35,13 +35,17 @@ export default function Counter() {
                     strokeWidth="0.3"
                     fontFamily='inherit'
                     fontWeight="bold"
-                    fontSize="100" textAnchor='middle' x="50%" y="50%" dominantBaseline="central">
+                    fontSize="100" textAnchor='middle' x="50%" y="70%" dominantBaseline="central">
                     1103
                 </text>
             </svg>
         </div>
         <div className={styles.dataContainer}>
-            <div className={styles.dataBody}>
+            <motion.div className={styles.dataBody}
+                transition={{ duration: 1 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+            >
                 <h2 className={styles.counterContainer}>
                     <Countdown targetDate={getEventDate()}/>
                 </h2>
@@ -50,20 +54,27 @@ export default function Counter() {
                 </div>
 
                 <div className={styles.networks}>
-                    {networks.map(network => <Link key={network.name} href={network.href}>
+                    {networks.map(network => <Link key={network.name} href={network.href} target="_blank">
                         <span>{network.icon}</span>
                     </Link>)}
                 </div>
-            </div>
+            </motion.div>
             <motion.div className={styles.footer}
+                initial={
+                    {
+                        y: -100,
+                        opacity: 0.5
+                    }
+                }
+                whileInView={
+                    {
+                        y: 0,
+                        opacity: 1
+                    }
+                }
                 transition={{ duration: 1 }}
-                initial={{
-                    borderRadius: '0 0 0 0'
-                }}
-                whileInView={{
-                    borderRadius: '100% 100% 0 0'
-                }}>
-
+            >
+                <div className={styles.bgFooter}></div>
                 <div className={styles.logoContainer}>
                     <Image src={'/assets/images/logo.svg'}
                         fill={true}

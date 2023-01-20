@@ -13,6 +13,9 @@ Comment.belongsToMany(User, { through: Affinity, foreignKey: 'commentId' })
 Post.belongsTo(User, { foreignKey: 'userId' })
 User.hasMany(Post, { foreignKey: 'userId' })
 
+Comment.belongsTo(Post, { foreignKey: 'postId' })
+Post.hasMany(Comment, { foreignKey: 'postId' })
+
 export {
     Comment,
     User,
