@@ -13,7 +13,13 @@ export default function apiHandler() {
             response.status(error.error_code || 501).json({
                 code: error.error_code || 501,
                 message: error.message,
-                errors: [{ code: error.error_code || 501, mesage: error.message }]
+                errors: [
+                    {
+                        code: error.error_code || 501,
+                        mesage: error.message,
+                        stackTrace: error
+                    }
+                ]
             })
         },
         onNoMatch: (request, response) => {
