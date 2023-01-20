@@ -22,6 +22,7 @@ const retrieve = async (offset, limit) => {
         include: [
             {
                 model: User,
+                as: 'user',
                 attributes: {
                     exclude: ['password', 'createdAt', 'updatedAt', 'isAdmin']
                 }
@@ -35,10 +36,12 @@ const retrieveSingle = async (id) => {
     const post = await Post.findByPk(id, {
         include: [
             {
-                model: Comment
+                model: Comment,
+                as: 'comments'
             },
             {
                 model: User,
+                as: 'user',
                 attributes: {
                     exclude: ['password', 'createdAt', 'updatedAt', 'isAdmin']
                 }
