@@ -13,7 +13,6 @@ export default function Input({
         e.preventDefault()
         const form = new FormData(e.target)
         const formData = Object.fromEntries(form)
-        console.log(formData)
         try {
             setLoading(true)
             // eslint-disable-next-line no-unused-vars
