@@ -7,7 +7,10 @@ const create = async(body) => {
 
 const retrieve = async () => {
     const users = await User.findAll({
-        order: ['id']
+        order: ['id'],
+        attributes: {
+            exclude: ['password', 'isAdmin']
+        }
     })
     return users
 }
@@ -39,6 +42,17 @@ const retrieveComments = async (id, offset, limit) => {
     return comments
 }
 
+const retrievePosts = async (id, offset, limit) => {
+    const posts = await Post.findAll({
+        where: {
+            userId: id
+        },
+        offset,
+        limit
+    })
+    return posts
+}
+
 const update = async (id, body) => {
     return 'not yet implemented'
 }
@@ -52,6 +66,7 @@ export {
     retrieve,
     retrieveSingle,
     retrieveComments,
+    retrievePosts,
     update,
     destroy
 }
