@@ -29,6 +29,13 @@ export default function LandingLayout ({ children }) {
                 <meta name="description" content="MaVie empowers anyone with access to life changing opportunities, unconditional support of a business-driven community and an open path to financial freedom." />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
+                <link href='/apple-touch-icon.png' rel='apple-touch-icon' sizes='180x180' />
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+                <meta property="og:title" content="MaVie | Dubai Grand Event" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://mavie-dubai-grand-event.vercel.app" />
+                <meta property="og:image" content="https://mavie-dubai-grand-event.vercel.app/images/og.png" />
             </Head>
             <Header />
             <main className=' overflow-clip'>
