@@ -11,10 +11,15 @@ const create = async(userId, postId, body) => {
 
     if (body.parentId) {
         parent = await Comment.findByPk(body.parentId)
+        level = parent.level + 1
+        if (level > 2) {
+            throw { message: 'You can only comment on first level comments', error_code: 424 }
+        }
         if (!parent) {
             throw { message: 'Comment parent does not exists', error_code: 424 }
         }
-        level = parent.level + 1
+        parent.isParent = true
+        await parent.save()
     }
 
     const commentBody = {
