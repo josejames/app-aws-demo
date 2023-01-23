@@ -2,13 +2,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
 // Components
-import Button from '@components/shared/Button'
+import HeaderUser from '@components/shared/HeaderUser'
 // Layout
 import InnerContainer from '@layouts/InnerContainer'
 
 const Header = () => (
     <>
-        <header className='w-full bg-black fixed top-0 z-40 shadow-2xl shadow-black'>
+        <header className='w-full bg-black-top-gradient fixed top-0 z-40'>
             <InnerContainer>
                 <nav className='h-16 md:h-24 flex justify-between items-center'>
                     <div className='relative w-36 md:w-48 h-10'>
@@ -17,7 +17,7 @@ const Header = () => (
                     <div className='flex items-center gap-10'>
                         <div>Event</div>
                         <div>Blog</div>
-                        <Button>Avatar</Button>
+                        <HeaderUser />
                     </div>
                 </nav>
             </InnerContainer>
@@ -54,7 +54,7 @@ export default function BlogLayout ({ children }) {
                 <meta property="og:image" content="https://mavie-dubai-grand-event.vercel.app/images/og.png" />
             </Head>
             <Header />
-            <main className=' overflow-clip'>
+            <main className='bg-brand-black overflow-clip'>
                 { children }
             </main>
             <Footer />
