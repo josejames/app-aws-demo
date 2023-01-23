@@ -4,12 +4,9 @@ import factory from '@config/authConfig'
 
 const handler = apiHandler({
 }).get(async (request, response) => {
-    const { offset, limit } = request.query
-
-    console.log('query', request.query)
-
-    const posts = await retrieve(offset, limit)
-    return response.send(posts)
+    const { id, offset, limit } = request.query
+    const comments = await retrieve(id, offset, limit)
+    return response.send(comments)
 }).post(factory.middleware, async (request, response) => {
     const { id } = request.query
     const body = request.body

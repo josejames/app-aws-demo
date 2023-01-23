@@ -3,6 +3,7 @@ import '@styles/globals.sass'
 // Fonts
 import localFonts from '@next/font/local'
 import { Inter } from '@next/font/google'
+import { AuthProvider } from '@utils/auth-provider'
 
 const eestiPro = localFonts({
     src: [
@@ -38,7 +39,9 @@ const inter = Inter({
 export default function App ({ Component, pageProps }) {
     return (
         <div className={`${eestiPro.variable} ${inter.variable} font-eesti relative`}>
-            <Component {...pageProps} />
+            <AuthProvider>
+                <Component {...pageProps} />
+            </AuthProvider>
         </div>
     )
 }

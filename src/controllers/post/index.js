@@ -1,3 +1,4 @@
+import Sequelize from 'sequelize'
 import Comment from '@models/comment'
 import Post from '@models/post'
 import User from '@models/user'
@@ -15,16 +16,18 @@ const create = async(user, body) => {
 }
 
 const retrieve = async (offset, limit) => {
+    // TODO: on create make a little resume for the text
     const posts = await Post.findAll({
         order: ['id'],
         offset,
         limit,
+        attributes: ['id', [Sequelize.fn('SUBSTRING', Sequelize.col('content'), 0, 50), 'content']],
         include: [
             {
                 model: User,
                 as: 'user',
                 attributes: {
-                    exclude: ['password', 'createdAt', 'updatedAt', 'isAdmin']
+                    exclude: ['password', 'createdAt', 'updatedAt', 'isAdmin', 'status']
                 }
             }
         ]
@@ -37,7 +40,20 @@ const retrieveSingle = async (id) => {
         include: [
             {
                 model: Comment,
-                as: 'comments'
+                as: 'comments',
+                where: {
+                    level: 1
+                },
+                attributes: {
+                    exclude: ['userId', 'postId']
+                },
+                include: [
+                    {
+                        model: User,
+                        as: 'user',
+                        attributes: ['id', 'name', 'lastName', 'username']
+                    }
+                ]
             },
             {
                 model: User,
@@ -52,7 +68,17 @@ const retrieveSingle = async (id) => {
 }
 
 const update = async (id, body) => {
-    return 'not yet implemented'
+    const post = await Post.findByPk(id)
+    if (!post) {
+        throw { message: 'post not found to update', error_code: 404 }
+    }
+
+    post.title = body.title ?? post.title
+    post.slug = body.slug ?? post.slug
+    post.content = body.content ?? post.content
+
+    await post.save()
+    return post
 }
 
 const destroy = async (id) => {

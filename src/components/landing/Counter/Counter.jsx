@@ -1,5 +1,5 @@
 // import AnimatedGear from '@components/AnimatedGear/AnimatedGear'
-import Countdown from '@components/Countdown/Countdown'
+import Countdown from '@components/shared/Countdown/Countdown'
 import getEventDate from '@utils/constants/eventDate'
 import { networks } from '@utils/constants/networks'
 import { motion } from 'framer-motion'

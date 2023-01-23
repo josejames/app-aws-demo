@@ -8,7 +8,7 @@
       "@hooks": ["./hooks/index.ts"],
       "@services/*": ["./services/*"],
       "@utils/*": ["./utils/*"],
-      "@constants/*": ["./constants/*"],
+      "@constants/*": ["./utils/constants/*"],
       "@styles/*": ["./styles/*"],
       "@config/*": ["./config/*"],
       "@models/*": ["./models/*"],

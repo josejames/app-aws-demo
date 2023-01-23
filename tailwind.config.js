@@ -12,11 +12,17 @@ module.exports = {
             colors: {
                 'brand-cyan': 'var(--brand-cyan)',
                 'brand-pink': 'var(--brand-pink)',
-                'brand-gray': 'var(--brand-gray)'
+                'brand-gray': 'var(--brand-gray)',
+                'brand-black': 'var(--brand-black)'
             },
             backgroundImage: {
                 'main-gradient': 'var(--main-gradient)',
-                'news': "url('/assets/images/landing/news.png')"
+                'black-top-gradient': 'var(--black-top-gradient)',
+                'black-bottom-gradient': 'var(--black-bottom-gradient)',
+                news: "url('/assets/images/landing/news.png')"
+            },
+            animation: {
+                'spin-slow': 'spin 3s linear infinite'
             }
         }
     },
