@@ -85,10 +85,50 @@ const destroy = async (id) => {
     return 'not yet implemented'
 }
 
+const comments = async (id, offset, limit) => {
+    const firstLevel = await Comment.findAll({
+        order: ['createdAt'],
+        where: {
+            postId: id,
+            level: 1
+        },
+        offset,
+        limit,
+        include: [
+            {
+                model: User,
+                as: 'user',
+                attributes: ['id', 'name', 'lastName']
+            }
+        ]
+    })
+
+    for (const comment of firstLevel) {
+        if (comment.isParent) {
+            const responses = await Comment.findAll({
+                where: {
+                    parentId: comment.id
+                },
+                include: [
+                    {
+                        model: User,
+                        as: 'user',
+                        attributes: ['id', 'name', 'lastName']
+                    }
+                ]
+            })
+            comment.setDataValue('responses', responses)
+        }
+    }
+
+    return firstLevel
+}
+
 export {
     create,
     retrieve,
     retrieveSingle,
+    comments,
     update,
     destroy
 }

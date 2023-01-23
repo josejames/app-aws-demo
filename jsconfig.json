@@ -13,7 +13,8 @@
       "@config/*": ["./config/*"],
       "@models/*": ["./models/*"],
       "@controllers/*": ["./controllers/*"],
-      "@middlewares/*": ["./middlewares/*"]
+      "@middlewares/*": ["./middlewares/*"],
+      "@ajv/*": ["./ajv/*"]
     }
   }
 }
