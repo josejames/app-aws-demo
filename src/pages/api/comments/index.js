@@ -1,15 +1,13 @@
 import apiHandler from '@config/apiHandler'
-import { retrieve, create } from '@controllers/post'
+import { retrieve, create } from '@controllers/comments'
 import factory from '@config/authConfig'
 
 const handler = apiHandler({
 }).get(async (request, response) => {
     const { offset, limit } = request.query
-
-    console.log('query', request.query)
-
-    const posts = await retrieve(offset, limit)
-    return response.send(posts)
+    const { postId } = request.body
+    const comments = await retrieve(postId, offset, limit)
+    return response.send(comments)
 }).post(factory.middleware, async (request, response) => {
     const body = request.body
     const user = request.user
