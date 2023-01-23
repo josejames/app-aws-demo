@@ -1,6 +1,5 @@
 import Affinity from '@models/affinity'
 import Comment from '@models/comment'
-import Post from '@models/post'
 import User from '@models/user'
 import { AFFINATIONS } from '@utils/constants/affinations'
 import sequelize from '@config/database'
@@ -11,10 +10,15 @@ const create = async(userId, postId, body) => {
 
     if (body.parentId) {
         parent = await Comment.findByPk(body.parentId)
+        level = parent.level + 1
+        if (level > 2) {
+            throw { message: 'You can only comment on first level comments', error_code: 424 }
+        }
         if (!parent) {
             throw { message: 'Comment parent does not exists', error_code: 424 }
         }
-        level = parent.level + 1
+        parent.isParent = true
+        await parent.save()
     }
 
     const commentBody = {
@@ -30,9 +34,8 @@ const create = async(userId, postId, body) => {
 }
 
 const retrieve = async (postId, offset, limit) => {
-    // TODO: read and create the levels on the comments
-    const comments = await Comment.findAll({
-        order: ['id'],
+    const firstLevel = await Comment.findAll({
+        order: ['createdAt'],
         where: {
             postId
         },
@@ -47,24 +50,56 @@ const retrieve = async (postId, offset, limit) => {
             }
         ]
     })
-    return comments
+
+    for (const comment of firstLevel) {
+        if (comment.isParent) {
+            const responses = await Comment.findAll({
+                where: {
+                    parentId: comment.id
+                },
+                include: [
+                    {
+                        model: User,
+                        as: 'user',
+                        attributes: ['id', 'name', 'lastName']
+                    }
+                ]
+            })
+            comment.setDataValue('responses', responses)
+        }
+    }
+    return firstLevel
 }
 
 const retrieveSingle = async (id) => {
-    const post = await Post.findByPk(id, {
+    const firstLevel = await Comment.findByPk(id, {
+        order: ['createdAt'],
+        level: 1,
         include: [
             {
-                model: Comment
-            },
-            {
                 model: User,
-                attributes: {
-                    exclude: ['password', 'createdAt', 'updatedAt', 'isAdmin']
-                }
+                as: 'user',
+                attributes: ['id', 'name', 'lastName']
             }
         ]
     })
-    return post
+
+    if (firstLevel.isParent) {
+        const responses = await Comment.findAll({
+            where: {
+                parentId: firstLevel.id
+            },
+            include: [
+                {
+                    model: User,
+                    as: 'user',
+                    attributes: ['id', 'name', 'lastName']
+                }
+            ]
+        })
+        firstLevel.setDataValue('responses', responses)
+    }
+    return firstLevel
 }
 
 const vote = async (id, userId, affinity) => {
