@@ -1,27 +1,3 @@
-const transactionSchema = {
-    type: 'object',
-    properties: {
-        asset: { type: 'string' },
-        quantity: { type: 'number', minimum: 0 },
-        price_per_coin: { type: 'number' },
-        total_spent: { type: 'number' },
-        date: { type: 'string' },
-        type: { type: 'string', enum: ['buy', 'sell'] },
-        portfolio_id: { type: 'string' }
-    },
-    required: ['asset', 'quantity', 'price_per_coin', 'total_spent', 'date', 'type', 'portfolio_id'],
-    additionalProperties: false
-}
-
-const portfolioSchema = {
-    type: 'object',
-    properties: {
-        name: { type: 'string' }
-    },
-    required: ['name'],
-    additionalProperties: false
-}
-
 const userSchema = {
     type: 'object',
     properties: {
@@ -34,6 +10,17 @@ const userSchema = {
     additionalProperties: true
 }
 
+const postSchema = {
+    type: 'object',
+    properties: {
+        title: { type: 'string' },
+        content: { type: 'string' },
+        slug: { type: 'string' }
+    },
+    required: ['title', 'content', 'slug'],
+    additionalProperties: true
+}
+
 const commmentSchema = {
     type: 'object',
     properties: {
@@ -43,4 +30,39 @@ const commmentSchema = {
     additionalProperties: true
 }
 
-module.exports = { transactionSchema, portfolioSchema, userSchema, commmentSchema }
+const loginSchema = {
+    type: 'object',
+    properties: {
+        username: { type: 'string' },
+        password: { type: 'string' }
+    },
+    required: ['username', 'password'],
+    additionalProperties: false
+}
+
+const voteSchema = {
+    type: 'object',
+    properties: {
+        affinity: { type: 'number' }
+    },
+    required: ['affinity'],
+    additionalProperties: false
+}
+
+const newsletterSchema = {
+    type: 'object',
+    properties: {
+        email: { type: 'string' }
+    },
+    required: ['email'],
+    additionalProperties: false
+}
+
+module.exports = {
+    postSchema,
+    newsletterSchema,
+    loginSchema,
+    voteSchema,
+    userSchema,
+    commmentSchema
+}
