@@ -3,8 +3,8 @@ import { useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 // Components
-import ColoredText from '@components/ColoredText'
-import Countdown from '@components/Countdown/Countdown'
+import ColoredText from '@components/shared/ColoredText'
+import Countdown from '@components/shared/Countdown/Countdown'
 // Layout
 import InnerContainer from '@layouts/InnerContainer'
 // Framer Motion

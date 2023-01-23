@@ -1,4 +1,4 @@
-import Input from '@components/Input'
+import Input from '@components/shared/Input'
 import { motion } from 'framer-motion'
 
 const NewsLetter = () => {

@@ -1,6 +1,6 @@
 // Components
-import VideoBg from '@components/VideoBg'
-import ColoredText from '@components/ColoredText'
+import VideoBg from '@components/shared/VideoBg'
+import ColoredText from '@components/shared/ColoredText'
 import Paragraph from './Paragraph'
 import InnerContainer from '@layouts/InnerContainer'
 // React
@@ -11,7 +11,7 @@ import {
     useScroll,
     useTransform
 } from 'framer-motion'
-import AnimatedGear from '@components/AnimatedGear/AnimatedGear'
+import AnimatedGear from '@components/shared/AnimatedGear/AnimatedGear'
 
 function useParallax(value, distance) {
     return useTransform(value, [0, 1], [-distance, distance])

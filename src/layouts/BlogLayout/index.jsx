@@ -2,7 +2,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 // Components
-import Button from '@components/Button'
+import Button from '@components/shared/Button'
 // Layout
 import InnerContainer from '@layouts/InnerContainer'
 
@@ -14,7 +14,11 @@ const Header = () => (
                     <div className='relative w-36 md:w-48 h-10'>
                         <Image src='/assets/images/logo-global.png' alt='Mavie global' priority fill className='object-contain' />
                     </div>
-                    <Button>join the waitlist</Button>
+                    <div className='flex items-center gap-10'>
+                        <div>Event</div>
+                        <div>Blog</div>
+                        <Button>Avatar</Button>
+                    </div>
                 </nav>
             </InnerContainer>
         </header>

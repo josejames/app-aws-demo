@@ -2,7 +2,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 // Components
-import Button from '@components/Button'
+import Button from '@components/shared/Button'
 // Layout
 import InnerContainer from '@layouts/InnerContainer'
 
