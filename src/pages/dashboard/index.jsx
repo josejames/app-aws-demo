@@ -1,4 +1,4 @@
-import BlogLayout from '@layouts/BlogLayout'
+
 import { useAuth } from '@utils/auth-provider'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
@@ -19,32 +19,30 @@ export default function Dashboard () {
             password: 'asd123'
         })
     }, [])
-    return <BlogLayout>
-        <div className={styles.container}>
-            <div className={styles.sidebar}>
-                <div className={styles.profileInfo}>
-                    <div className={styles.avatarContainer}>
-                        <Image alt="avatar" src='https://ui-avatars.com/api/?background=0D8ABC&color=fff' fill={true}/>
-                    </div>
-                    <div className={styles.name}>
-                        Juan Hebert Chable
-                    </div>
+    return <div className={styles.container}>
+        <div className={styles.sidebar}>
+            <div className={styles.profileInfo}>
+                <div className={styles.avatarContainer}>
+                    <Image alt="avatar" src='https://ui-avatars.com/api/?background=0D8ABC&color=fff' fill={true}/>
                 </div>
-                <div className={styles.menu}>
-                    {items.map((item, index) => <div
-                        key={index}
-                        className={`${styles.item} ${item === itemSelected ? styles.selected : ''}`}
-                        onClick={() => setItemSelected(items[index])}>
-                        <div className={styles.icon}>
-                            {item.icon}
-                        </div>
-                        <div className={styles.title}>{item.title}</div>
-                    </div>)}
+                <div className={styles.name}>
+                        Juan Hebert Chable
                 </div>
             </div>
-            <div className={styles.content}>
-                {itemSelected.component}
+            <div className={styles.menu}>
+                {items.map((item, index) => <div
+                    key={index}
+                    className={`${styles.item} ${item === itemSelected ? styles.selected : ''}`}
+                    onClick={() => setItemSelected(items[index])}>
+                    <div className={styles.icon}>
+                        {item.icon}
+                    </div>
+                    <div className={styles.title}>{item.title}</div>
+                </div>)}
             </div>
         </div>
-    </BlogLayout>
+        <div className={styles.content}>
+            {itemSelected.component}
+        </div>
+    </div>
 }

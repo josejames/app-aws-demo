@@ -13,9 +13,10 @@ const userSchema = {
 const postSchema = {
     type: 'object',
     properties: {
-        title: { type: 'string' },
-        content: { type: 'string' },
-        slug: { type: 'string' }
+        title: { type: 'string', minLength: 1 },
+        content: { type: 'string', minLength: 1 },
+        // TODO: add pattern to validate slugs
+        slug: { type: 'string', minLength: 4 }
     },
     required: ['title', 'content', 'slug'],
     additionalProperties: true
