@@ -13,12 +13,25 @@ const create = async(user, body) => {
         throw { message: 'Slug already exists', error_code: 409 }
     }
 
+    // let subtring = body.content.substring(250)
+    const subtring = body.content.replace(/(<([^>]+)>)/ig, '')
+    let resume
+
+    if (subtring.length > 128) {
+        resume = subtring.substring(0, 127)
+    } else {
+        resume = subtring
+    }
+
+    console.log('resume', resume)
+    console.log('resume', resume.length)
     const postBody = {
         title: body.title,
         slug: body.slug,
         image: body.image,
         content: body.content,
-        userId: user.id
+        userId: user.id,
+        resume
     }
 
     const post = await Post.create(postBody)
@@ -70,7 +83,6 @@ const update = async (id, body) => {
     }
 
     post.title = body.title ?? post.title
-    post.slug = body.slug ?? post.slug
     post.content = body.content ?? post.content
 
     await post.save()

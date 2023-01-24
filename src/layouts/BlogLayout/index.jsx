@@ -44,8 +44,8 @@ const Footer = () => (
                         <div className='relative w-36 md:w-48 h-10'>
                             <Image src='/assets/images/logo-global.png' alt='Mavie global' fill className='object-contain' />
                         </div>
-                        <Link href='/' className=''>Privacy policy</Link>
-                        <Link href='/' className=''>Terms and conditions</Link>
+                        <Link href='/privacy' className=''>Privacy policy</Link>
+                        <Link href='/terms' className=''>Terms and conditions</Link>
                         <div className='flex flex-col items-center md:items-start gap-2'>
                             <span>Company Information</span>
                             <Link href='mailto:mavie@maviesupport.com'>
