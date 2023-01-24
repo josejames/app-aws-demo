@@ -38,7 +38,7 @@ const inter = Inter({
 
 export default function App ({ Component, pageProps }) {
     return (
-        <div className={`${eestiPro.variable} ${inter.variable} font-eesti relative`}>47
+        <div className={`${eestiPro.variable} ${inter.variable} font-eesti relative`}>
             <AuthProvider>
                 <Component {...pageProps} />
             </AuthProvider>

@@ -3,21 +3,25 @@ import Head from 'next/head'
 import Image from 'next/image'
 // Components
 import HeaderUser from '@components/shared/HeaderUser'
+import MobileMenu from '@components/shared/MobileMenu'
 // Layout
 import InnerContainer from '@layouts/InnerContainer'
 
 const Header = () => (
     <>
-        <header className='w-full bg-black-top-gradient fixed top-0 z-40'>
+        <header className='w-full bg-black-top-gradient absolute top-0 z-40 transition-all duration-300'>
             <InnerContainer>
                 <nav className='h-16 md:h-24 flex justify-between items-center'>
                     <div className='relative w-36 md:w-48 h-10'>
                         <Image src='/assets/images/logo-global.png' alt='Mavie global' priority fill className='object-contain' />
                     </div>
-                    <div className='flex items-center gap-10'>
-                        <div>Event</div>
-                        <div>Blog</div>
-                        <HeaderUser />
+                    <div className='flex items-center gap-4 md:gap-10'>
+                        <div className='hidden lg:block'>Event</div>
+                        <div className='hidden lg:block'>Blog</div>
+                        <div className='hidden lg:flex'>
+                            <HeaderUser />
+                        </div>
+                        <MobileMenu />
                     </div>
                 </nav>
             </InnerContainer>
