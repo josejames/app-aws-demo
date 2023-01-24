@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@lottiefiles/react-lottie-player': 3.5.0-beta.10
   '@next/font': 13.1.2
   '@tailwindcss/aspect-ratio': ^0.4.2
   '@tailwindcss/line-clamp': ^0.4.2
@@ -33,6 +34,7 @@ specifiers:
   tailwindcss: ^3.2.4
 
 dependencies:
+  '@lottiefiles/react-lottie-player': 3.5.0-beta.10_react@18.2.0
   '@next/font': 13.1.2
   ajv: 8.12.0
   aws-sdk: 2.1300.0
@@ -287,6 +289,15 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
+    dev: false
+
+  /@lottiefiles/react-lottie-player/3.5.0-beta.10_react@18.2.0:
+    resolution: {integrity: sha512-uIUTgj/dKvkbHT2F92/HRF/EFp3PRcVdekZsISFGHdeh3sF7Wsv6nXAxPjoPbCB/tQgmUxdGNESRoFK95lvY2Q==}
+    peerDependencies:
+      react: 16 - 18
+    dependencies:
+      lottie-web: 5.10.2
+      react: 18.2.0
     dev: false
 
   /@motionone/animation/10.15.1:
@@ -2387,6 +2398,10 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
+
+  /lottie-web/5.10.2:
+    resolution: {integrity: sha512-d0PFIGiwuMsJYaF4uPo+qG8dEorlI+xFI2zrrFtE1bGO4WoLIz+NjremxEq1swpR7juR10aeOtmNh3d6G3ub0A==}
+    dev: false
 
   /lru-cache/6.0.0:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}

@@ -70,7 +70,10 @@ export default function BlogEdit({ blogId, onClose, onSave }) {
             <input type='text' value={blog.title} onChange={(event) => setBlog({ ...blog, title: event.target.value })} name='title'></input>
             <label htmlFor="slug">Slug {validationErrors.slug && <span className={styles.error}>({validationErrors.slug})</span>} </label>
             <input type='text' value={blog.slug} onChange={(event) => setBlog({ ...blog, slug: event.target.value })} name='slug'></input>
+            <label htmlFor='image'>Imagen</label>
+            <input type={'file'}></input>
             <label>Content {validationErrors.content && <span className={styles.error}>({validationErrors.content})</span>} </label>
+
             <div className={styles.editorContainer}>
                 <ReactQuill theme="snow"
                     value={blog.content}
