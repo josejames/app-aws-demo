@@ -36,25 +36,9 @@ const retrieve = async (offset, limit) => {
 }
 
 const retrieveSingle = async (id) => {
+    console.log('id', id)
     const post = await Post.findByPk(id, {
         include: [
-            {
-                model: Comment,
-                as: 'comments',
-                where: {
-                    level: 1
-                },
-                attributes: {
-                    exclude: ['userId', 'postId']
-                },
-                include: [
-                    {
-                        model: User,
-                        as: 'user',
-                        attributes: ['id', 'name', 'lastName', 'username']
-                    }
-                ]
-            },
             {
                 model: User,
                 as: 'user',
