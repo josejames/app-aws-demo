@@ -9,6 +9,8 @@ import { useState } from 'react'
 // Components
 import Button from '@components/blog/Login/Button'
 import { useAuth } from '@utils/auth-provider'
+// Next Js
+import { useRouter } from 'next/router'
 
 export default function LoginForm () {
     const [username, setUsername] = useState('')
@@ -16,13 +18,14 @@ export default function LoginForm () {
     const [password, setPassword] = useState('')
     const [isRegister, setIsRegister] = useState(false)
     const auth = useAuth()
+    const router = useRouter()
 
-    const onSubmit = async (e) => {
+    const onSubmit = (e) => {
         e.preventDefault()
         if (!isRegister) {
             const loginData = { username, password }
-            const res = await auth.signin(loginData)
-            console.log(res)
+            auth.signin(loginData)
+            router.push('/blog')
         } else {
             const registerData = { username, email, password }
         }
