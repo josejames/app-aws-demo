@@ -55,3 +55,32 @@ export function useBlog() {
     }, [])
     return { blog, loading, error, fetch, fetchAsync }
 }
+
+export function useBlogCreator() {
+    const [blog, setBlog] = useState()
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState()
+    const createOrUpdate = useCallback(async (blog) => {
+        try {
+            setLoading(true)
+            const result = await createOrUpdateSync(blog)
+            setBlog(result)
+        } catch (error) {
+            setError(error)
+        } finally {
+            setLoading(false)
+        }
+    }, [])
+    const createOrUpdateSync = useCallback(async(blog) => {
+        let response
+        if (blog.id) {
+            response = await apiClient.put(`/posts/${blog.id}`, blog)
+        } else {
+            response = await apiClient.post('/posts', blog)
+        }
+        return response.data
+    }, [])
+    return {
+        blog, loading, error, createOrUpdate, createOrUpdateSync
+    }
+}

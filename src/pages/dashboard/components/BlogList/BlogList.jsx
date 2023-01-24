@@ -36,9 +36,9 @@ export default function BlogList() {
                     className={styles.item}>
                     <div className={styles.image}>
                         <Image alt="image"
-                            src={blog.image}
+                            src={blog.image || '/assets/images/no-image.jpeg'}
                             style={{ objectFit: 'cover' }}
-                            fill={true}/></div>o
+                            fill={true}/></div>
                     <div className={styles.title}>{blog.title}</div>
                     <div className={styles.actions}>
                         <div className={styles.action} onClick={() => handleTrashClick(blog)}><FaTrashAlt/></div>
