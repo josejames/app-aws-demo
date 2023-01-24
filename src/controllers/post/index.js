@@ -1,4 +1,3 @@
-import Sequelize from 'sequelize'
 import Comment from '@models/comment'
 import Post from '@models/post'
 import User from '@models/user'
@@ -21,7 +20,9 @@ const retrieve = async (offset, limit) => {
         order: ['id'],
         offset,
         limit,
-        attributes: ['id', [Sequelize.fn('SUBSTRING', Sequelize.col('content'), 0, 120), 'content']],
+        attributes: {
+            exclude: ['content']
+        },
         include: [
             {
                 model: User,
@@ -36,25 +37,9 @@ const retrieve = async (offset, limit) => {
 }
 
 const retrieveSingle = async (id) => {
+    console.log('id', id)
     const post = await Post.findByPk(id, {
         include: [
-            {
-                model: Comment,
-                as: 'comments',
-                where: {
-                    level: 1
-                },
-                attributes: {
-                    exclude: ['userId', 'postId']
-                },
-                include: [
-                    {
-                        model: User,
-                        as: 'user',
-                        attributes: ['id', 'name', 'lastName', 'username']
-                    }
-                ]
-            },
             {
                 model: User,
                 as: 'user',
