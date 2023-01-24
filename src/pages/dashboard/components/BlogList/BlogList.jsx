@@ -1,5 +1,5 @@
 import { useAuth } from '@utils/auth-provider'
-import { useBlogList } from 'hooks/connectors/useBlog'
+import { useBlogDeleter, useBlogList } from 'hooks/connectors/useBlog'
 import Image from 'next/image'
 import { useCallback, useEffect, useState } from 'react'
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'
@@ -9,6 +9,7 @@ import styles from './styles.module.sass'
 export default function BlogList() {
     const auth = useAuth()
     const blogList = useBlogList()
+    const blogDeleter = useBlogDeleter()
     const [selectedBlog, setSelectedBlog] = useState()
     // Fetch the blog list, when the user is loaded
     useEffect(() => {
@@ -23,7 +24,15 @@ export default function BlogList() {
 
     }, [])
     const handleTrashClick = useCallback((blog) => {
-
+        const doDelete = async () => {
+            try {
+                await blogDeleter.delSync(blog.id)
+                blogList.setList(blogList.list.filter(item => item.id != blog.id))
+            } catch (error) {
+                console.log('Cant delete the blog')
+            }
+        }
+        doDelete()
     }, [])
     const handleEditClick = useCallback((blog) => {
         setSelectedBlog(blog)
