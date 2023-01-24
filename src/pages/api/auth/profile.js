@@ -5,7 +5,6 @@ const handler = apiHandler()
     .use(auth.middleware)
     .get(async (request, response) => {
         const user = request.user
-
         return response.json(user)
     })
 

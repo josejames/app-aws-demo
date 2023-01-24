@@ -1,0 +1,13 @@
+.ql-container {
+  background-color: #222
+}
+.ql-toolbar{
+  background: var(--main-gradient)
+}
+
+.ql-toolbar.ql-snow {
+  border: 1px solid var(--brand-pink)
+}
+.ql-container.ql-snow{
+  border: 1px solid var(--brand-pink)
+}
