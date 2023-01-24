@@ -7,7 +7,8 @@ module.exports = {
         extend: {
             fontFamily: {
                 eesti: ['var(--font-eesti)'],
-                inter: ['var(--font-inter)']
+                inter: ['var(--font-inter)'],
+                dm: ['var(--font-dm)']
             },
             colors: {
                 'brand-cyan': 'var(--brand-cyan)',
@@ -23,8 +24,14 @@ module.exports = {
             },
             animation: {
                 'spin-slow': 'spin 3s linear infinite'
+            },
+            transitionTimingFunction: {
+                spring: 'cubic-bezier(.58,.08,.23,1.38)'
             }
         }
     },
-    plugins: []
+    plugins: [
+        require('@tailwindcss/aspect-ratio'),
+        require('@tailwindcss/line-clamp')
+    ]
 }

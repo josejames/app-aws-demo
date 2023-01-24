@@ -1,23 +1,30 @@
 // Common
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 // Components
 import HeaderUser from '@components/shared/HeaderUser'
+import MobileMenu from '@components/shared/MobileMenu'
 // Layout
 import InnerContainer from '@layouts/InnerContainer'
+// Icons
+import { FiMail, FiPhone } from 'react-icons/fi'
 
 const Header = () => (
     <>
-        <header className='w-full bg-black-top-gradient fixed top-0 z-40'>
+        <header className='w-full bg-black-top-gradient absolute top-0 z-40 transition-all duration-300'>
             <InnerContainer>
                 <nav className='h-16 md:h-24 flex justify-between items-center'>
                     <div className='relative w-36 md:w-48 h-10'>
                         <Image src='/assets/images/logo-global.png' alt='Mavie global' priority fill className='object-contain' />
                     </div>
-                    <div className='flex items-center gap-10'>
-                        <div>Event</div>
-                        <div>Blog</div>
-                        <HeaderUser />
+                    <div className='flex items-center gap-4 md:gap-10'>
+                        <Link href='/' className='hidden lg:block'>Event</Link>
+                        <Link href='/' className='hidden lg:block'>Blog</Link>
+                        <div className='hidden lg:flex'>
+                            <HeaderUser />
+                        </div>
+                        <MobileMenu />
                     </div>
                 </nav>
             </InnerContainer>
@@ -27,10 +34,37 @@ const Header = () => (
 
 const Footer = () => (
     <>
-        <footer>
+        <footer className='w-full bg-brand-black font-dm overflow-hidden'>
             <InnerContainer>
-                <div>
-                    <span>Footer</span>
+                <div className='w-full relative'>
+                    <div className='w-72 h-72 absolute -bottom-28 -right-11'>
+                        <Image src='/assets/images/blog/footer.png' alt='Footer vector' fill />
+                    </div>
+                    <div className='w-full h-48 flex flex-col lg:flex-row justify-around items-center'>
+                        <div className='relative w-36 md:w-48 h-10'>
+                            <Image src='/assets/images/logo-global.png' alt='Mavie global' fill className='object-contain' />
+                        </div>
+                        <Link href='/' className=''>Privacy policy</Link>
+                        <Link href='/' className=''>Terms and conditions</Link>
+                        <div className='flex flex-col items-center md:items-start gap-2'>
+                            <span>Company Information</span>
+                            <Link href='mailto:mavie@maviesupport.com'>
+                                <div className='flex justify-center md:justify-start items-center gap-2'>
+                                    <FiMail />
+                                    <span className='text-xs'>mavie@maviesupport.com</span>
+                                </div>
+                            </Link>
+                            <Link href='tel:270 555-0017'>
+                                <div className='flex justify-center md:justify-start items-center gap-2'>
+                                    <FiPhone />
+                                    <span className='text-xs'>(270) 555-0017</span>
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
+                    <div className='w-full h-16 flex justify-center items-center'>
+                        <span className='text-sm text-center'>All Rights Reserved Mavie © 2023</span>
+                    </div>
                 </div>
             </InnerContainer>
         </footer>

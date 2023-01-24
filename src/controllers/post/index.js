@@ -1,4 +1,3 @@
-import Sequelize from 'sequelize'
 import Comment from '@models/comment'
 import Post from '@models/post'
 import User from '@models/user'
@@ -21,7 +20,9 @@ const retrieve = async (offset, limit) => {
         order: ['id'],
         offset,
         limit,
-        attributes: ['id', [Sequelize.fn('SUBSTRING', Sequelize.col('content'), 0, 50), 'content']],
+        attributes: {
+            exclude: ['content']
+        },
         include: [
             {
                 model: User,
@@ -36,25 +37,9 @@ const retrieve = async (offset, limit) => {
 }
 
 const retrieveSingle = async (id) => {
+    console.log('id', id)
     const post = await Post.findByPk(id, {
         include: [
-            {
-                model: Comment,
-                as: 'comments',
-                where: {
-                    level: 1
-                },
-                attributes: {
-                    exclude: ['userId', 'postId']
-                },
-                include: [
-                    {
-                        model: User,
-                        as: 'user',
-                        attributes: ['id', 'name', 'lastName', 'username']
-                    }
-                ]
-            },
             {
                 model: User,
                 as: 'user',
@@ -85,10 +70,50 @@ const destroy = async (id) => {
     return 'not yet implemented'
 }
 
+const comments = async (id, offset, limit) => {
+    const firstLevel = await Comment.findAll({
+        order: ['createdAt'],
+        where: {
+            postId: id,
+            level: 1
+        },
+        offset,
+        limit,
+        include: [
+            {
+                model: User,
+                as: 'user',
+                attributes: ['id', 'name', 'lastName']
+            }
+        ]
+    })
+
+    for (const comment of firstLevel) {
+        if (comment.isParent) {
+            const responses = await Comment.findAll({
+                where: {
+                    parentId: comment.id
+                },
+                include: [
+                    {
+                        model: User,
+                        as: 'user',
+                        attributes: ['id', 'name', 'lastName']
+                    }
+                ]
+            })
+            comment.setDataValue('responses', responses)
+        }
+    }
+
+    return firstLevel
+}
+
 export {
     create,
     retrieve,
     retrieveSingle,
+    comments,
     update,
     destroy
 }

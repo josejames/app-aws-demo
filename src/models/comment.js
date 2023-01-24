@@ -21,6 +21,10 @@ const Comment = sequelize.define('Comment', {
     parentId: {
         type: DataTypes.INTEGER
     },
+    isParent: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
     level: {
         type: DataTypes.SMALLINT,
         defaultValue: 1
