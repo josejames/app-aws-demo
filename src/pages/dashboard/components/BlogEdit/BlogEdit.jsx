@@ -3,8 +3,10 @@ import { useCallback, useEffect, useState } from 'react'
 import styles from './styles.module.sass'
 import dynamic from 'next/dynamic'
 import { useBlog, useBlogCreator } from 'hooks/connectors/useBlog'
+import { IoClose } from 'react-icons/io5'
+import { TailSpin } from 'react-loader-spinner'
 const ReactQuill = dynamic(import('react-quill'), { ssr: false })
-export default function BlogEdit({ blogId }) {
+export default function BlogEdit({ blogId, onClose, onSave }) {
     const [blog, setBlog] = useState({
         title: '',
         slug: '',
@@ -16,6 +18,9 @@ export default function BlogEdit({ blogId }) {
     const [validationErrors, setValidationErrors] = useState({})
     const handleSubmit = useCallback((event) => {
         event.preventDefault()
+        if (blogCreator.loading) {
+            return
+        }
         const errors = {}
         let hasErrors = false
 
@@ -35,7 +40,7 @@ export default function BlogEdit({ blogId }) {
         if (!hasErrors) {
             blogCreator.createOrUpdate(blog)
         }
-    }, [blog])
+    }, [blog, blogCreator])
 
     useEffect(() => {
         if (blogCreator.blog) {
@@ -45,12 +50,21 @@ export default function BlogEdit({ blogId }) {
 
     useEffect(() => {
         if (blogId) {
-            blogFetcher.fetchAsync(blogId).then(value => setBlog(value))
+            const fetcher = async() => {
+                try {
+                    const blog = await blogFetcher.fetchAsync(blogId)
+                    setBlog(blog)
+                } catch (error) {
+                    console.log('error at fetching', error)
+                }
+            }
+            fetcher()
         }
     }, [blogId])
 
     return <div className={styles.container}>
-        <h1>{blog.id ? 'Update Post' : 'Add New Post'}</h1>
+        <div className={styles.header}>
+            <h1>{blog.id ? 'Update Post' : 'Add New Post'}</h1> {onClose && <span onClick={onClose}><IoClose /></span>}</div>
         <form onSubmit={handleSubmit}>
             <label htmlFor="title">Title {validationErrors.title && <span className={styles.error}>({validationErrors.title})</span>} </label>
             <input type='text' value={blog.title} onChange={(event) => setBlog({ ...blog, title: event.target.value })} name='title'></input>
@@ -60,10 +74,20 @@ export default function BlogEdit({ blogId }) {
             <div className={styles.editorContainer}>
                 <ReactQuill theme="snow"
                     value={blog.content}
-                    onChange={(value) => setBlog({ ...blog, content: value })}
+                    onChange={(value) => setBlog((oldValue) => ({ ...oldValue, content: value }))}
                     style={{ height: '100%' }} />
             </div>
-            <button type={'submit'}>Save</button>
+            <button type={'submit'}>{blogCreator.loading
+                ? <TailSpin
+                    width="24"
+                    height="24"
+                    color="#000"
+                    radius="1"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                />
+                : 'Save'}</button>
         </form>
     </div>
 }
