@@ -14,26 +14,40 @@ import { useRouter } from 'next/router'
 
 export default function LoginForm () {
     const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [email, setEmail] = useState('')
     const [isRegister, setIsRegister] = useState(false)
     const auth = useAuth()
     const router = useRouter()
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
         if (!isRegister) {
-            const loginData = { username, password }
-            auth.signin(loginData)
-            router.push('/blog')
+            try {
+                const loginData = { username, password }
+                await auth.signin(loginData)
+                router.push('/blog')
+            } catch (error) {
+                console.log('error')
+            }
         } else {
             const registerData = { username, email, password }
+            try {
+                // const loginData = { username, password }
+                await auth.signin(registerData)
+            } catch (error) {
+                console.log('error')
+            }
         }
     }
 
     const toggleForm = () => {
         setIsRegister(!isRegister)
         setUsername('')
+        setFirstName('')
+        setLastName('')
         setEmail('')
         setPassword('')
     }
@@ -56,21 +70,53 @@ export default function LoginForm () {
                         <IoPersonOutline/>
                     </div>
                 </div>
-                {isRegister && <div className= "relative">
-                    <label>Email address</label>
-                    <input
-                        placeholder='Email address'
-                        type="email"
-                        name="username"
-                        autoComplete="off"
-                        required
-                        value={email}
-                        onChange = {e => setEmail(e.target.value)}
-                    />
-                    <div className= 'absolute right-1 bottom-3 text-[#909090]'>
-                        <FiMail/>
+                {isRegister && <>
+                    <div className= "relative">
+                        <label>First Name</label>
+                        <input
+                            placeholder='First Name'
+                            type="text"
+                            name="username"
+                            autoComplete="off"
+                            required
+                            value={firstName}
+                            onChange = {e => setFirstName(e.target.value)}
+                        />
+                        <div className= 'absolute right-1 bottom-3 text-[#909090]'>
+                            <IoPersonOutline/>
+                        </div>
                     </div>
-                </div>}
+                    <div className= "relative">
+                        <label>Last Name</label>
+                        <input
+                            placeholder='Last Name'
+                            type="text"
+                            name="username"
+                            autoComplete="off"
+                            required
+                            value={lastName}
+                            onChange = {e => setLastName(e.target.value)}
+                        />
+                        <div className= 'absolute right-1 bottom-3 text-[#909090]'>
+                            <IoPersonOutline/>
+                        </div>
+                    </div>
+                    <div className= "relative">
+                        <label>Email address</label>
+                        <input
+                            placeholder='Email address'
+                            type="email"
+                            name="username"
+                            autoComplete="off"
+                            required
+                            value={email}
+                            onChange = {e => setEmail(e.target.value)}
+                        />
+                        <div className= 'absolute right-1 bottom-3 text-[#909090]'>
+                            <FiMail/>
+                        </div>
+                    </div>
+                </>}
                 <div className= "relative">
                     <label>Password</label>
                     <input
