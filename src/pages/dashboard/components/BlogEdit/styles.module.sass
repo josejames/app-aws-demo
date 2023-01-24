@@ -1,0 +1,29 @@
+.container
+
+    form
+        margin-top: 10px
+        display: flex
+        flex-flow: column
+        input
+            background-color: #222222
+            padding: 5px 10px
+            width: 100%
+            border: 1px solid var(--brand-pink)
+            &:focus
+                border: 1px solid var(--brand-cyan)
+                outline: none
+                background-color: #2c2c2c
+        .editorContainer
+            margin-top: 20px
+            height: 400px
+            position: relative
+        button[type='submit']
+            margin-top: 60px
+            background: var(--main-gradient)
+            padding: 5px 20px
+            align-self: flex-end
+            color: #000
+            transition: all 0.2s ease-in-out
+            min-width: 100px
+            &:hover
+                color: #fff

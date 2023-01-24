@@ -1,5 +1,9 @@
 // Styles
 import '@styles/globals.sass'
+// Text Editor Css
+import 'react-quill/dist/quill.snow.css'
+import '@styles/quill_mavie.css'
+
 // Fonts
 import localFonts from '@next/font/local'
 import { Inter } from '@next/font/google'
