@@ -72,12 +72,17 @@ export default function LoginForm () {
                 { isRegister ? 'Register' : 'Login'}
             </Button>
         </form>
-        {!isRegister && <a className = "cursor-pointer" onClick={() => setIsRegister(true)}>
-            {" Don't have an account "}
-            <span className='text-undelined'>
-                {'Sign Up'}
-            </span>
-        </a>
+        {
+            !isRegister
+                ? <a className = "cursor-pointer hover:text-brand-cyan" onClick={() => setIsRegister(!isRegister)}>
+                    {" Don't have an account "}
+                    <span className='underline'>
+                        {'Sign Up'}
+                    </span>
+                </a>
+                : <a className = "cursor-pointer hover:text-brand-cyan" onClick={() => setIsRegister(!isRegister)}>
+                    {' Log In '}
+                </a>
         }
     </div>
 }

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Hero from '@components/blog/Post/Hero'
 import PostBody from '@components/blog/Post/PostBody'
 import BlogLayout from '@layouts/BlogLayout'
+import CommentSection from '@components/blog/Comments/CommentSection'
 
 export default function Post () {
     const [post, setPost] = useState({})
@@ -26,5 +27,8 @@ export default function Post () {
             userName={post.userName}
             date={post.date}
         />
+        <div className="w-full">
+            <CommentSection/>
+        </div>
     </BlogLayout>
 }

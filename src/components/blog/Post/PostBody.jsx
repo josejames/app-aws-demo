@@ -2,15 +2,13 @@
 import { IoPersonCircle } from 'react-icons/io5'
 // HTML parser
 import HtmlParser from 'html-react-parser'
-// Components
-import CommentSection from '@components/blog/Comments/CommentSection'
 
 export default function PostBody ({ content = '', userName = '', date = '' }) {
     return <div className = " flex flex-col items-center w-full" >
-        <div className = "max-w-[70%] flex flex-col items-center gap-10">
-            <div className= "flex w-full justify-between">
+        <div className = "lg:max-w-[75ch] max-w-[90vw] min-w-[300px] flex flex-col items-center gap-10">
+            <div className= "flex w-full justify-between items-center">
                 <div className="flex items-center gap-3">
-                    <IoPersonCircle className='text-5xl' />
+                    <IoPersonCircle className='text-5xl left-[-4px] relative' />
                     <p className = "text-[24px] leading-7 font-normal">
                         {userName}
                     </p>
@@ -21,11 +19,8 @@ export default function PostBody ({ content = '', userName = '', date = '' }) {
                     </p>
                 </div>
             </div>
-            <p className = "text-[24px] leading-7 font-normal">
+            <div className = "text-[24px] leading-7 font-normal flex flex-col gap-10">
                 {HtmlParser(content)}
-            </p>
-            <div className= 'w-full'>
-                <CommentSection/>
             </div>
         </div>
     </div>
