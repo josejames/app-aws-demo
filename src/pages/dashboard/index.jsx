@@ -14,19 +14,23 @@ export default function Dashboard () {
     const [itemSelected, setItemSelected] = useState(items[0])
     const auth = useAuth()
     useEffect(() => {
-        auth.signin({
-            username: 'xmbeat',
-            password: 'asd123'
-        })
+        try {
+            auth.signin({
+                username: 'xmdbeat',
+                password: 'asd123'
+            })
+        } catch (error) {
+            alert('credenciales incorrectas')
+        }
     }, [])
     return <div className={styles.container}>
         <div className={styles.sidebar}>
             <div className={styles.profileInfo}>
                 <div className={styles.avatarContainer}>
-                    <Image alt="avatar" src='https://ui-avatars.com/api/?background=0D8ABC&color=fff' fill={true}/>
+                    <Image alt="avatar" src={`https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${auth.user?.name}`} fill={true}/>
                 </div>
                 <div className={styles.name}>
-                        Juan Hebert Chable
+                    {`${auth.user?.name} ${auth.user?.lastName && ''}`}
                 </div>
             </div>
             <div className={styles.menu}>
