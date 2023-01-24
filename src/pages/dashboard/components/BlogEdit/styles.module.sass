@@ -1,6 +1,21 @@
 .container
     h1
         font-size: 24px
+    .header
+        display: flex
+        justify-content: space-between
+        align-items: center
+        span
+            font-size: 20px
+            cursor: pointer
+            min-width: 32px
+            min-height: 32px
+            display: flex
+            align-items: center
+            justify-content: center
+            color: #000
+            background: var(--main-gradient)
+            
     form
         margin-top: 10px
         display: flex
@@ -24,7 +39,11 @@
         button[type='submit']
             margin-top: 60px
             background: var(--main-gradient)
-            padding: 5px 20px
+            padding: 5px
+            min-height: 30px
+            display: flex
+            align-items: center
+            justify-content: center
             align-self: flex-end
             color: #000
             transition: all 0.2s ease-in-out
