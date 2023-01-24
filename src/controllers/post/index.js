@@ -78,7 +78,30 @@ const update = async (id, body) => {
 }
 
 const destroy = async (id) => {
-    return 'not yet implemented'
+    const post = await Post.findByPk(id)
+
+    if (!post) {
+        throw { message: 'Post not found', error_code: 404 }
+    }
+
+    try {
+        // delete comments
+        await Comment.destroy({
+            where: {
+                postId: post.id
+            }
+        })
+
+        await Post.destroy({
+            where: {
+                id: post.id
+            }
+        })
+
+        return true
+    } catch (error) {
+        return false
+    }
 }
 
 const comments = async (id, offset, limit) => {
