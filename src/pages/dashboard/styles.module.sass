@@ -2,17 +2,69 @@
 
 .container
     position: relative
+    margin-top: 100px
     height: 100vh
-    overflow-y: scroll
-    
 .sidebar
     position: absolute
     left: 0
+    top: 0px
     width: 250px
     display: flex
     flex-flow: column
     height: 100%
-    overflow-y: scroll
+    align-items: center
+    overflow-y: auto
+    background-color: #141414
+    &::-webkit-scrollbar
+        background-color: #282828
+        width: 12px
+    &::-webkit-scrollbar-thumb
+        background-color: #4a4a4a
+
 .content
-    height: 100vh
+    position: absolute
+    left: 250px
+    top: 0px
+    width: calc(100% - 250px)
+    height: 100%
+    padding: 10px
+
+.profileInfo
+    display: flex
+    flex-flow: column
+    align-items: center
+    justify-content: center
+    gap: 10px
+    margin-top: 10px
+    .name
+        padding: 10px
+.avatarContainer
     position: relative
+    width: 80px
+    height: 80px
+    overflow: hidden
+    border-radius: 50%
+
+.menu
+    width: 100%
+    display: flex
+    flex-flow: column
+    gap: 4px
+    .item
+        color: #000
+        display: flex
+        align-items: center
+        gap: 10px
+        padding: 5px 10px
+        width: 100%
+        background: linear-gradient(90deg, #51C9E4 0%, #CF6597 100%)
+        cursor: pointer
+        transition: all 0.3s ease-in-out
+        position: relative 
+        border: 1px solid #CF6597
+        &:hover
+            color: #ffffff
+            background-position-x: 250px
+            border: 1px solid #fff
+        &.selected
+            border: 1px solid #51C9E4

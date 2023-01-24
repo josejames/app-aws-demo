@@ -1,0 +1,38 @@
+.container
+    position: relative
+    display: flex
+    flex-flow: column
+
+    .item
+        display: flex
+        gap: 10px
+        padding: 10px
+        align-items: center
+        border: 1px solid transparent
+        cursor: pointer
+        transition: all 0.2s ease-in-out
+        &:hover
+            border: 1px solid var(--brand-pink)
+        .image
+            width: 60px
+            height: 60px
+            min-width: 60px
+            min-height: 60px
+            position: relative
+            border-radius: 10px
+            overflow: hidden
+        .title
+            flex-grow: 1
+        .actions
+            display: flex
+            gap: 10px
+            .action 
+                display: flex
+                align-items: center
+                justify-content: center
+                padding: 10px
+                background: var(--main-gradient)
+                color: #000000
+                border-radius: 10px
+                width: 40px
+                height: 40px

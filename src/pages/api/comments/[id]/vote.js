@@ -1,15 +1,12 @@
 import apiHandler from '@config/apiHandler'
-import { retrieve, vote } from '@controllers/comments'
+import { vote } from '@controllers/comments'
 import factory from '@config/authConfig'
+import { voteSchema } from '@ajv/schemas'
+import { processValidation } from '@ajv/handle'
 
-const handler = apiHandler({
-}).get(async (request, response) => {
-    const { id, offset, limit } = request.query
-    const comments = await retrieve(id, offset, limit)
-
-    return response.send(comments)
-}).post(factory.middleware, async (request, response) => {
+const handler = apiHandler({}).post(factory.middleware, async (request, response) => {
     const { id } = request.query
+    processValidation(voteSchema, request.body)
     const { affinity } = request.body
     const result = await vote(id, request.user.id, affinity)
 
