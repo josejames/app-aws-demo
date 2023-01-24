@@ -13,15 +13,16 @@ export default function LoginForm () {
     const [user, setUser] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [isRegister, setIsRegister] = useState(false)
 
-    const onSubmit = () => {
-
+    const onSubmit = (e) => {
+        e.preventDefault()
     }
 
     return <div className={styles.formBox}>
         <form onSubmit={onSubmit}>
             <div className={styles.inputBox}>
-                <div className= "relative">
+                {isRegister && <div className= "relative">
                     <label>Username</label>
                     <input
                         placeholder='Username'
@@ -35,7 +36,7 @@ export default function LoginForm () {
                     <div className= 'absolute right-1 bottom-3 text-[#909090]'>
                         <IoPersonOutline/>
                     </div>
-                </div>
+                </div>}
                 <div className= "relative">
                     <label>Email address</label>
                     <input
@@ -54,7 +55,7 @@ export default function LoginForm () {
                 <div className= "relative">
                     <label>Password</label>
                     <input
-                        placeholder='Enter your backoffice password'
+                        placeholder='Password'
                         type="password"
                         name="password"
                         autoComplete="off"
@@ -67,9 +68,16 @@ export default function LoginForm () {
                     </div>
                 </div>
             </div>
+            <Button htmlType="submit">
+                { isRegister ? 'Register' : 'Login'}
+            </Button>
         </form>
-        <Button>
-                Register
-        </Button>
+        {!isRegister && <a className = "cursor-pointer" onClick={() => setIsRegister(true)}>
+            {" Don't have an account "}
+            <span className='text-undelined'>
+                {'Sign Up'}
+            </span>
+        </a>
+        }
     </div>
 }

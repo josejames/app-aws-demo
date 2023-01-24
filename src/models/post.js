@@ -18,6 +18,9 @@ const Post = sequelize.define('Post', {
     content: {
         type: DataTypes.TEXT
     },
+    resume: {
+        type: DataTypes.STRING(128)
+    },
     tags: {
         type: DataTypes.STRING
     },

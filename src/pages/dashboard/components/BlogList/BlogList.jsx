@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useCallback, useEffect } from 'react'
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'
 import styles from './styles.module.sass'
+
 export default function BlogList() {
     const auth = useAuth()
     const blogList = useBlogList()
