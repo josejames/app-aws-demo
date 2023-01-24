@@ -2,6 +2,8 @@
 import { IoPersonCircle } from 'react-icons/io5'
 // HTML parser
 import HtmlParser from 'html-react-parser'
+// Components
+import CommentSection from '@components/blog/Comments/CommentSection'
 
 export default function PostBody ({ content = '', userName = '', date = '' }) {
     return <div className = " flex flex-col items-center w-full" >
@@ -23,9 +25,7 @@ export default function PostBody ({ content = '', userName = '', date = '' }) {
                 {HtmlParser(content)}
             </p>
             <div className= 'w-full'>
-                <div className='relative bg-main-gradient bg-clip-text w-fit'>
-                    <h4 className='text-4xl font-medium text-transparent text-center'>Add your comment</h4>
-                </div>
+                <CommentSection/>
             </div>
         </div>
     </div>
