@@ -23,6 +23,9 @@ module.exports = {
             },
             animation: {
                 'spin-slow': 'spin 3s linear infinite'
+            },
+            transitionTimingFunction: {
+                spring: 'cubic-bezier(.58,.08,.23,1.38)'
             }
         }
     },
