@@ -3,6 +3,16 @@ import Post from '@models/post'
 import User from '@models/user'
 
 const create = async(user, body) => {
+    const slug = await Post.findOne({
+        where: {
+            slug: body.slug
+        }
+    })
+
+    if (slug) {
+        throw { message: 'Slug already exists', error_code: 409 }
+    }
+
     const postBody = {
         title: body.title,
         slug: body.slug,
@@ -10,6 +20,7 @@ const create = async(user, body) => {
         content: body.content,
         userId: user.id
     }
+
     const post = await Post.create(postBody)
     return post
 }
