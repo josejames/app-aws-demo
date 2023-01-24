@@ -1,4 +1,5 @@
 // Components
+import Paginator from '@components/shared/Paginator'
 import PostCard from '@components/shared/PostCard'
 import InnerContainer from '@layouts/InnerContainer'
 
@@ -18,6 +19,13 @@ export default function SeeMore() {
                             />
                         ))
                     }
+                </div>
+                <div className='w-full flex justify-center items-center'>
+                    <Paginator
+                        page={1}
+                        onPrev={() => console.log('Prev page')}
+                        onNext={() => console.log('Next page')}
+                    />
                 </div>
             </InnerContainer>
         </section>
