@@ -70,7 +70,6 @@ const update = async (id, body) => {
     }
 
     post.title = body.title ?? post.title
-    post.slug = body.slug ?? post.slug
     post.content = body.content ?? post.content
 
     await post.save()
