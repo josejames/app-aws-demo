@@ -1,11 +1,12 @@
 // Common
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+// Components
+import HeaderUser from '../HeaderUser'
 // Framer motion
 import { motion as m, AnimatePresence } from 'framer-motion'
 // Styles
 import styles from './styles.module.sass'
-import HeaderUser from '../HeaderUser'
 
 const Menu = ({ isOpen, onClick }) => (
     <AnimatePresence>
@@ -43,13 +44,13 @@ export default function MobileMenu() {
         const header = document.querySelector('header')
         const menuLines = buttonRef.current.childNodes
         if (isOpen) {
-            body.classList.add('fixed', 'overflow-y-scroll', 'h-screen')
+            body.classList.add('fixed', 'overflow-y-hidden', 'h-screen')
             header.classList.add('bg-brand-black')
             menuLines[0].classList.add('rotate-45')
             menuLines[1].classList.add('opacity-0')
             menuLines[2].classList.add('-rotate-45')
         } else {
-            body.classList.remove('fixed', 'overflow-y-scroll', 'h-screen')
+            body.classList.remove('fixed', 'overflow-y-hidden', 'h-screen')
             header.classList.remove('bg-brand-black')
             menuLines[0].classList.remove('rotate-45')
             menuLines[1].classList.remove('opacity-0')

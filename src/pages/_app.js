@@ -2,7 +2,7 @@
 import '@styles/globals.sass'
 // Fonts
 import localFonts from '@next/font/local'
-import { Inter } from '@next/font/google'
+import { Inter, DM_Sans as DMSans } from '@next/font/google'
 import { AuthProvider } from '@utils/auth-provider'
 
 const eestiPro = localFonts({
@@ -36,9 +36,15 @@ const inter = Inter({
     subsets: ['latin']
 })
 
+const dmSans = DMSans({
+    variable: '--font-dm',
+    weight: ['400', '500', '700'],
+    subsets: ['latin']
+})
+
 export default function App ({ Component, pageProps }) {
     return (
-        <div className={`${eestiPro.variable} ${inter.variable} font-eesti relative`}>
+        <div className={`${eestiPro.variable} ${inter.variable} ${dmSans.variable} font-eesti relative`}>
             <AuthProvider>
                 <Component {...pageProps} />
             </AuthProvider>
