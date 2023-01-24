@@ -7,7 +7,8 @@ module.exports = {
         extend: {
             fontFamily: {
                 eesti: ['var(--font-eesti)'],
-                inter: ['var(--font-inter)']
+                inter: ['var(--font-inter)'],
+                dm: ['var(--font-dm)']
             },
             colors: {
                 'brand-cyan': 'var(--brand-cyan)',

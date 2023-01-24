@@ -21,7 +21,7 @@ const retrieve = async (offset, limit) => {
         order: ['id'],
         offset,
         limit,
-        attributes: ['id', [Sequelize.fn('SUBSTRING', Sequelize.col('content'), 0, 50), 'content']],
+        attributes: ['id', [Sequelize.fn('SUBSTRING', Sequelize.col('content'), 0, 120), 'content']],
         include: [
             {
                 model: User,
