@@ -1,6 +1,7 @@
 import BlogLayout from '@layouts/BlogLayout'
+import { useAuth } from '@utils/auth-provider'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { IoAdd, IoGrid } from 'react-icons/io5'
 import BlogEdit from './components/BlogEdit/BlogEdit'
 import BlogList from './components/BlogList/BlogList'
@@ -11,7 +12,13 @@ const items = [
 ]
 export default function Dashboard () {
     const [itemSelected, setItemSelected] = useState(items[0])
-
+    const auth = useAuth()
+    useEffect(() => {
+        auth.signin({
+            username: 'xmbeat',
+            password: 'asd123'
+        })
+    }, [])
     return <BlogLayout>
         <div className={styles.container}>
             <div className={styles.sidebar}>

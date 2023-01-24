@@ -1,5 +1,6 @@
-import axios from 'axios'
+
 import React, { useState, useEffect, createContext, useContext } from 'react'
+import apiClient from './api-client'
 
 const authContext = createContext()
 
@@ -40,7 +41,7 @@ export function useAuthProvider() {
     }, [])
 
     const getUser = async (token) => {
-        const response = await axios.get('/api/auth/profile', {
+        const response = await apiClient.get('/auth/profile', {
             headers: {
                 authorization: `Bearer ${token}`
             }
@@ -49,7 +50,7 @@ export function useAuthProvider() {
     }
 
     const revalidate = async () => {
-        const response = await axios.post('/api/auth/refresh', null, {
+        const response = await apiClient.post('/auth/refresh', null, {
             headers: {
                 authorization: `Bearer ${token}`
             }
@@ -88,7 +89,7 @@ export function useAuthProvider() {
     const signin = async (credentials) => {
         setFetchingUser(true)
         try {
-            const response = await axios.post('/api/auth/login', credentials)
+            const response = await apiClient.post('/auth/login', credentials)
             const token = response.data.token
             const user = await getUser(token)
             localStorage.setItem('token', token)
@@ -108,7 +109,7 @@ export function useAuthProvider() {
     }
 
     const signout = async () => {
-        const response = await axios.post('/api/auth/logout', null, {
+        const response = await apiClient.post('/auth/logout', null, {
             headers: {
                 authorization: `Bearer ${token}`
             }

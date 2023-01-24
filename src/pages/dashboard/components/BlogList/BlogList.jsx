@@ -14,7 +14,7 @@ export default function BlogList() {
                 userId: auth.user.id
             })
         }
-    }, [auth.user, blogList])
+    }, [auth.user])
 
     const handleBlogClick = useCallback((blog) => {
 
