@@ -5,9 +5,11 @@ import Hero from '@components/blog/Post/Hero'
 import PostBody from '@components/blog/Post/PostBody'
 import BlogLayout from '@layouts/BlogLayout'
 import CommentSection from '@components/blog/Comments/CommentSection'
+import { useBlog } from 'hooks/connectors/useBlog'
 
 export default function Post () {
     const [post, setPost] = useState({})
+    const { blog, loading, error, fetch } = useBlog()
 
     useEffect(() => {
         setPost({
