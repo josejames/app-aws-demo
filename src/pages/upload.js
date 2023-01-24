@@ -11,7 +11,7 @@ export default function FileUpload() {
         setUploadingStatus(true)
 
         const { data } = await axios.post('/api/s3/upload', {
-            name: `images/${file.name}`,
+            name: file.name,
             type: file.type,
             title: 'heloo world'
         })

@@ -28,7 +28,8 @@
     "react-icons": "^4.7.1",
     "react-quill": "^2.0.0",
     "react-scroll": "^1.8.9",
-    "sequelize": "^6.28.0"
+    "sequelize": "^6.28.0",
+    "swiper": "^8.4.6"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
