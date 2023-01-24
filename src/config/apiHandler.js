@@ -9,7 +9,6 @@ BigInt.prototype.toJSON = function() {
 export default function apiHandler() {
     return nextConnect({
         onError: (error, request, response) => {
-            console.error(error)
             response.status(error.error_code || 501).json({
                 code: error.error_code || 501,
                 message: error.message,
