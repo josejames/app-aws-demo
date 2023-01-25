@@ -17,7 +17,7 @@ export default function Dashboard () {
     if (auth.fetchingUser) {
         return (
             <div className= 'h-screen w-screen flex justify-center items-center'>
-                <div className='w-10 h-10 bg-main-gradient rounded-full animate-pulse' />
+                <div className='w-10 h-10 bg-main-gradient rounded-full animate-ping' />
             </div>
         )
     }
