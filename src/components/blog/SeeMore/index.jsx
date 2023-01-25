@@ -40,13 +40,14 @@ export default function SeeMore() {
                         ? <>
                             <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 px-4'>
                                 {
-                                    data.map(({ title, resume, image, id }, i) => (
+                                    data.map(({ title, resume, image, id, user }, i) => (
                                         <PostCard
                                             key={i}
                                             title={ title }
                                             content={ resume }
                                             banner={ image }
-                                            author='Lorem Impsun'
+                                            author={ user.name }
+                                            url={ id }
                                         />
                                     ))
                                 }

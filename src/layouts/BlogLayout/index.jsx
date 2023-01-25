@@ -20,7 +20,8 @@ const Header = () => (
                     </div>
                     <div className='flex items-center gap-4 md:gap-10'>
                         <Link href='/' className='hidden lg:block'>Event</Link>
-                        <Link href='/' className='hidden lg:block'>Blog</Link>
+                        <Link href='/blog' className='hidden lg:block'>Blog</Link>
+                        <Link href='/dashboard' className='w-full hidden lg:block'>My posts</Link>
                         <div className='w-full min-w-[10rem] hidden lg:flex'>
                             <HeaderUser />
                         </div>

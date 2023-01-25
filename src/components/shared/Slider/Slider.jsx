@@ -53,7 +53,7 @@ const Slider = ({ items }) => {
                             <div className='w-[100%] md:w-[350px] mt-6'>
                                 <PostCard
                                     title={item.title}
-                                    author={`${item.user.name} ${item.user.lastName}`}
+                                    author={item.user.name}
                                     content={item.resume}
                                     url={item.id}
                                     banner={item.image}
