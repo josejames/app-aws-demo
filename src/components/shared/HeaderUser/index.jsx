@@ -6,12 +6,16 @@ import { useAuth } from '@utils/auth-provider'
 import { IoPersonCircle } from 'react-icons/io5'
 
 export default function HeaderUser() {
-    const { user } = useAuth()
+    const { user, fetchingUser } = useAuth()
+
+    if (fetchingUser) {
+        return <div className='w-full h-8 bg-brand-gray animate-pulse rounded-md' />
+    }
 
     if (user) {
         return (
             <div className='flex flex-row-reverse md:flex-row items-center gap-4 md:gap-10'>
-                <span>User name</span>
+                <span>{ user.name }</span>
                 <IoPersonCircle className='text-4xl' />
             </div>
         )
