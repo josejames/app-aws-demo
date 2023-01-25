@@ -163,7 +163,7 @@ const ErrorMessage = ({ error }) => {
     }
 
     return (
-        <div className="text-red-500 text-sm font-medium">
+        <div className="text-red-400 text-sm font-medium">
             {error}
         </div>
     )

@@ -46,7 +46,7 @@ export default function Post () {
                     />
                     <PostBody
                         content={post.content}
-                        userName='dante'
+                        userName={post.user.name}
                         date={post.createdAt}
                     />
                     <div className="w-full">
