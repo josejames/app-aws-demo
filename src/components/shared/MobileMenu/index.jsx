@@ -24,10 +24,13 @@ const Menu = ({ isOpen, onClick }) => (
                         <HeaderUser />
                     </li>
                     <li>
+                        <Link href='/dashboard' onClick={() => onClick()} className={styles.link}>My posts</Link>
+                    </li>
+                    <li>
                         <Link href='/' onClick={() => onClick()} className={styles.link}>Event</Link>
                     </li>
                     <li>
-                        <Link href='/' onClick={() => onClick()} className={styles.link}>Blog</Link>
+                        <Link href='/blog' onClick={() => onClick()} className={styles.link}>Blog</Link>
                     </li>
                 </ul>
             </m.div>
