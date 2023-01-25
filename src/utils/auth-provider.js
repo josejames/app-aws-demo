@@ -108,6 +108,28 @@ export function useAuthProvider() {
         }
     }
 
+    const registerUser = async (credentials) => {
+        setFetchingUser(true)
+        try {
+            const response = await apiClient.post('/auth/register', credentials)
+            const token = response.data.token
+            const user = await getUser(token)
+            localStorage.setItem('token', token)
+            localStorage.setItem('user', JSON.stringify(user))
+            setUser(user)
+            setToken(token)
+            return user
+        } catch (error) {
+            const data = error.response?.data
+            if (data) {
+                throw data
+            }
+            throw error
+        } finally {
+            setFetchingUser(false)
+        }
+    }
+
     const signout = async () => {
         const response = await apiClient.post('/auth/logout', null, {
             headers: {
@@ -123,5 +145,5 @@ export function useAuthProvider() {
         return true
     }
 
-    return { user, token, signin, signout, revalidate, refresh, fetchingUser, hasPermission }
+    return { user, token, signin, registerUser, signout, revalidate, refresh, fetchingUser, hasPermission }
 }
