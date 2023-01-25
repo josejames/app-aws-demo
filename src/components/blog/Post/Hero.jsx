@@ -1,11 +1,11 @@
 // Common
 import Image from 'next/image'
 
-export default function Hero({ headline = 'Own your future ' }) {
+export default function Hero({ headline = 'Own your future ', image = '' }) {
     return (
         <section className=''>
             <div className='w-full h-[70vh] relative flex justify-center items-end'>
-                <Image src='/assets/images/blog/postHero.png' fill alt='Hero image' className='object-cover' />
+                <Image src={image} fill alt='Hero image' className='object-cover' />
                 <div className='relative py-20'>
                     <h1 className='text-8xl font-medium text-white text-center'>{headline}</h1>
                 </div>

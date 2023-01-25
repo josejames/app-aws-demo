@@ -1,7 +1,7 @@
 
 import { useAuth } from '@utils/auth-provider'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { IoAdd, IoGrid } from 'react-icons/io5'
 import BlogEdit from './components/BlogEdit/BlogEdit'
 import BlogList from './components/BlogList/BlogList'
@@ -13,26 +13,20 @@ const items = [
 export default function Dashboard () {
     const [itemSelected, setItemSelected] = useState(items[0])
     const auth = useAuth()
-    useEffect(() => {
-        try {
-            auth.signin({
-                username: 'xmdbeat',
-                password: 'asd123'
-            })
-        } catch (error) {
-            alert('credenciales incorrectas')
-        }
-    }, [])
     return <div className={styles.container}>
+
         <div className={styles.sidebar}>
-            <div className={styles.profileInfo}>
-                <div className={styles.avatarContainer}>
-                    <Image alt="avatar" src={`https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${auth.user?.name}`} fill={true}/>
+            {
+                auth.user && <div className={styles.profileInfo}>
+                    <div className={styles.avatarContainer}>
+                        <Image alt="avatar" src={`https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${auth.user.name}`} fill={true}/>
+                    </div>
+                    <div className={styles.name}>
+                        {`${auth.user.name} ${auth.user.lastName && ''}`}
+                    </div>
                 </div>
-                <div className={styles.name}>
-                    {`${auth.user?.name} ${auth.user?.lastName && ''}`}
-                </div>
-            </div>
+            }
+
             <div className={styles.menu}>
                 {items.map((item, index) => <div
                     key={index}
