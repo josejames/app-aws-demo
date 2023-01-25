@@ -13,6 +13,20 @@ const items = [
 export default function Dashboard () {
     const [itemSelected, setItemSelected] = useState(items[0])
     const auth = useAuth()
+
+    if (auth.fetchingUser) {
+        return (
+            <div className= 'h-screen w-screen flex justify-center items-center'>
+                <div className='w-10 h-10 bg-main-gradient rounded-full animate-pulse' />
+            </div>
+        )
+    }
+
+    if (!auth.user) {
+        window.location.replace('/login')
+        return null
+    }
+
     return <div className={styles.container}>
 
         <div className={styles.sidebar}>
