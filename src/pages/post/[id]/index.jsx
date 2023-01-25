@@ -50,7 +50,7 @@ export default function Post () {
                         date={post.createdAt}
                     />
                     <div className="w-full">
-                        <CommentSection/>
+                        <CommentSection id={id}/>
                     </div>
                 </BlogLayout>
                 : <div className= 'h-screen w-screen flex justify-center items-center'>

@@ -6,12 +6,12 @@ import TextBox from '../TextBox/TextBox'
 import { useState } from 'react'
 
 const Comment = ({
-    erase,
     text,
-    children,
+    responses,
     likes = 0,
     dislikes = 0,
-    response = true
+    isParent,
+    erase
 }) => {
     const [write, setWrite] = useState(false)
     const handleTextbox = () => {
@@ -29,7 +29,7 @@ const Comment = ({
                 <AiOutlineLike className='text-brand-pink text-3xl mx-2'/><p>{likes}</p>
                 <AiOutlineDislike className='text-brand-pink text-3xl mx-2'/><p>{dislikes}</p>
                 {erase && <HiOutlineTrash className='text-brand-cyan text-3xl mx-2'/>}
-                {response &&
+                {isParent &&
                     <button
                         onClick={handleTextbox}
                         className='flex cursor-pointer'>
@@ -37,9 +37,6 @@ const Comment = ({
                         <p className='text-brand-cyan underline'>Response</p>
                     </button>}
             </div>
-            {children && <div className='w-[95%] ml-auto mr-0'>
-                {children}
-            </div> }
             {write &&
             <div className='w-[95%] ml-auto mr-0 my-6 transition-transform duration-500'>
                 <TextBox/>
