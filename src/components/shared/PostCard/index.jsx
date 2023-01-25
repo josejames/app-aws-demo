@@ -20,7 +20,7 @@ export default function PostCard({ title, content, banner = '/assets/images/og.p
                     <span>{ author }</span>
                 </div>
                 <div className={styles.button}>
-                    <Link href={url} >
+                    <Link href={`post/${url}`} >
                         <div>
                             Read more
                         </div>

@@ -21,7 +21,7 @@ const Header = () => (
                     <div className='flex items-center gap-4 md:gap-10'>
                         <Link href='/' className='hidden lg:block'>Event</Link>
                         <Link href='/' className='hidden lg:block'>Blog</Link>
-                        <div className='hidden lg:flex'>
+                        <div className='w-full min-w-[10rem] hidden lg:flex'>
                             <HeaderUser />
                         </div>
                         <MobileMenu />
