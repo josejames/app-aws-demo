@@ -31,7 +31,7 @@ export function useBlogList() {
         return response.data
     }, [])
 
-    return { list, loading, error, fetch, fetchAsync }
+    return { list, setList, loading, error, fetch, fetchAsync }
 }
 
 export function useBlog() {
@@ -41,7 +41,7 @@ export function useBlog() {
     const fetch = useCallback(async (blogId) => {
         try {
             setLoading(true)
-            const result = await fetchAsync()
+            const result = await fetchAsync(blogId)
             setBlog(result)
         } catch (error) {
             setError(error)
@@ -54,6 +54,28 @@ export function useBlog() {
         return response.data
     }, [])
     return { blog, loading, error, fetch, fetchAsync }
+}
+
+export function useBlogDeleter() {
+    const [blog, setBlog] = useState()
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState()
+    const del = useCallback(async (blogId) => {
+        try {
+            setLoading(true)
+            const result = await delSync(blogId)
+            setBlog(result)
+        } catch (error) {
+            setError(error)
+        } finally {
+            setLoading(false)
+        }
+    }, [])
+    const delSync = useCallback(async (blogId) => {
+        const response = await apiClient.delete(`/posts/${blogId}`)
+        return response.data
+    }, [])
+    return { blog, loading, error, del, delSync }
 }
 
 export function useBlogCreator() {

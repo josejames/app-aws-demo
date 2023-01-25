@@ -8,50 +8,117 @@ import { FiMail, FiLock } from 'react-icons/fi'
 import { useState } from 'react'
 // Components
 import Button from '@components/blog/Login/Button'
+import { useAuth } from '@utils/auth-provider'
+// Next Js
+import { useRouter } from 'next/router'
 
 export default function LoginForm () {
-    const [user, setUser] = useState('')
-    const [email, setEmail] = useState('')
+    const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [email, setEmail] = useState('')
     const [isRegister, setIsRegister] = useState(false)
+    const [error, setError] = useState(false)
+    const auth = useAuth()
+    const router = useRouter()
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
+        if (!isRegister) {
+            try {
+                const loginData = { username, password }
+                await auth.signin(loginData)
+                router.push('/blog')
+            } catch (error) {
+                setError(true)
+                console.log(error)
+            }
+        } else {
+            try {
+                const registerData = { username, email, password, name: firstName, lastName }
+                await auth.registerUser(registerData)
+                router.push('/blog')
+            } catch (error) {
+                console.log('error')
+            }
+        }
+    }
+
+    const toggleForm = () => {
+        setIsRegister(!isRegister)
+        setUsername('')
+        setFirstName('')
+        setLastName('')
+        setEmail('')
+        setPassword('')
     }
 
     return <div className={styles.formBox}>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} onChange={() => setError(false)}>
             <div className={styles.inputBox}>
-                {isRegister && <div className= "relative">
+                <div className= "relative">
                     <label>Username</label>
                     <input
                         placeholder='Username'
-                        // type="text"
+                        type="text"
                         name="username"
                         autoComplete="off"
                         required
-                        value={user}
-                        onChange = {e => setUser(e.target.value)}
+                        value={username}
+                        onChange = {e => setUsername(e.target.value)}
                     />
                     <div className= 'absolute right-1 bottom-3 text-[#909090]'>
                         <IoPersonOutline/>
                     </div>
-                </div>}
-                <div className= "relative">
-                    <label>Email address</label>
-                    <input
-                        placeholder='Email address'
-                        // type="text"
-                        name="username"
-                        autoComplete="off"
-                        required
-                        value={email}
-                        onChange = {e => setEmail(e.target.value)}
-                    />
-                    <div className= 'absolute right-1 bottom-3 text-[#909090]'>
-                        <FiMail/>
-                    </div>
                 </div>
+                {isRegister && <>
+                    <div className= "relative">
+                        <label>First Name</label>
+                        <input
+                            placeholder='First Name'
+                            type="text"
+                            name="username"
+                            autoComplete="off"
+                            required
+                            value={firstName}
+                            onChange = {e => setFirstName(e.target.value)}
+                        />
+                        <div className= 'absolute right-1 bottom-3 text-[#909090]'>
+                            <IoPersonOutline/>
+                        </div>
+                    </div>
+                    <div className= "relative">
+                        <label>Last Name</label>
+                        <input
+                            placeholder='Last Name'
+                            type="text"
+                            name="username"
+                            autoComplete="off"
+                            required
+                            value={lastName}
+                            onChange = {e => setLastName(e.target.value)}
+                        />
+                        <div className= 'absolute right-1 bottom-3 text-[#909090]'>
+                            <IoPersonOutline/>
+                        </div>
+                    </div>
+                    <div className= "relative">
+                        <label>Email address</label>
+                        <input
+                            placeholder='Email address'
+                            type="email"
+                            name="username"
+                            autoComplete="off"
+                            required
+                            value={email}
+                            onChange = {e => setEmail(e.target.value)}
+                        />
+                        <div className= 'absolute right-1 bottom-3 text-[#909090]'>
+                            <FiMail/>
+                        </div>
+                    </div>
+                </>}
                 <div className= "relative">
                     <label>Password</label>
                     <input
@@ -72,12 +139,32 @@ export default function LoginForm () {
                 { isRegister ? 'Register' : 'Login'}
             </Button>
         </form>
-        {!isRegister && <a className = "cursor-pointer" onClick={() => setIsRegister(true)}>
-            {" Don't have an account "}
-            <span className='text-undelined'>
-                {'Sign Up'}
-            </span>
-        </a>
+        {error &&
+            <ErrorMessage error = 'User not foud'/>
+        }
+        {
+            !isRegister
+                ? <a className = "cursor-pointer hover:text-brand-cyan" onClick={toggleForm}>
+                    {" Don't have an account "}
+                    <span className='underline'>
+                        {'Sign Up'}
+                    </span>
+                </a>
+                : <a className = "cursor-pointer hover:text-brand-cyan" onClick={toggleForm}>
+                    {' Log In '}
+                </a>
         }
     </div>
+}
+
+const ErrorMessage = ({ error }) => {
+    if (!error) {
+        return null
+    }
+
+    return (
+        <div className="text-red-400 text-sm font-medium">
+            {error}
+        </div>
+    )
 }

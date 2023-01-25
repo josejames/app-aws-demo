@@ -3,13 +3,37 @@ import Post from '@models/post'
 import User from '@models/user'
 
 const create = async(user, body) => {
+    const slug = await Post.findOne({
+        where: {
+            slug: body.slug
+        }
+    })
+
+    if (slug) {
+        throw { message: 'Slug already exists', error_code: 409 }
+    }
+
+    // let subtring = body.content.substring(250)
+    const subtring = body.content.replace(/(<([^>]+)>)/ig, '')
+    let resume
+
+    if (subtring.length > 128) {
+        resume = subtring.substring(0, 127)
+    } else {
+        resume = subtring
+    }
+
+    console.log('resume', resume)
+    console.log('resume', resume.length)
     const postBody = {
         title: body.title,
         slug: body.slug,
         image: body.image,
         content: body.content,
-        userId: user.id
+        userId: user.id,
+        resume
     }
+
     const post = await Post.create(postBody)
     return post
 }
@@ -59,7 +83,6 @@ const update = async (id, body) => {
     }
 
     post.title = body.title ?? post.title
-    post.slug = body.slug ?? post.slug
     post.content = body.content ?? post.content
 
     await post.save()
@@ -67,7 +90,30 @@ const update = async (id, body) => {
 }
 
 const destroy = async (id) => {
-    return 'not yet implemented'
+    const post = await Post.findByPk(id)
+
+    if (!post) {
+        throw { message: 'Post not found', error_code: 404 }
+    }
+
+    try {
+        // delete comments
+        await Comment.destroy({
+            where: {
+                postId: post.id
+            }
+        })
+
+        await Post.destroy({
+            where: {
+                id: post.id
+            }
+        })
+
+        return true
+    } catch (error) {
+        return false
+    }
 }
 
 const comments = async (id, offset, limit) => {

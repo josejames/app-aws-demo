@@ -20,7 +20,8 @@ module.exports = {
                 'main-gradient': 'var(--main-gradient)',
                 'black-top-gradient': 'var(--black-top-gradient)',
                 'black-bottom-gradient': 'var(--black-bottom-gradient)',
-                news: "url('/assets/images/landing/news.png')"
+                news: "url('/assets/images/landing/news.png')",
+                mvoutline: "url('/assets/images/mavieoutline.png')"
             },
             animation: {
                 'spin-slow': 'spin 3s linear infinite'

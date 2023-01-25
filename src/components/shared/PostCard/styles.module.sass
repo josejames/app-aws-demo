@@ -1,0 +1,36 @@
+.container
+    @apply w-full h-auto flex flex-col bg-brand-black border border-brand-cyan rounded-3xl overflow-hidden
+
+    .banner
+        @apply w-full aspect-w-16 aspect-h-9 relative
+        &::before
+            @apply w-full h-16 bg-black-bottom-gradient absolute bottom-0 left-0 z-10
+            content: ''
+        img
+            @apply object-cover
+
+    .containerContent
+        @apply w-full h-auto p-6 md:p-8
+
+        .title
+            @apply text-2xl font-medium leading-none mb-4 line-clamp-2
+
+        .content
+            @apply text-xs font-dm line-clamp-3
+
+        .author
+            @apply flex items-center gap-2 my-3
+
+            svg
+                @apply text-3xl
+        
+        .button
+            @apply w-1/2 flex
+
+            a
+                @apply w-full bg-main-gradient p-[1px] rounded-md
+                
+            div
+                @apply w-full h-full flex justify-center items-center bg-black text-sm font-light py-1 rounded-md transition-all ease-in-out
+                &:hover
+                    @apply bg-opacity-0 text-black font-normal
