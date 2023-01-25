@@ -19,6 +19,7 @@ export default function LoginForm () {
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [isRegister, setIsRegister] = useState(false)
+    const [error, setError] = useState(false)
     const auth = useAuth()
     const router = useRouter()
 
@@ -30,13 +31,14 @@ export default function LoginForm () {
                 await auth.signin(loginData)
                 router.push('/blog')
             } catch (error) {
-                console.log('error')
+                setError(true)
+                console.log(error)
             }
         } else {
-            const registerData = { username, email, password }
             try {
-                // const loginData = { username, password }
-                await auth.signin(registerData)
+                const registerData = { username, email, password, name: firstName, lastName }
+                await auth.registerUser(registerData)
+                router.push('/blog')
             } catch (error) {
                 console.log('error')
             }
@@ -53,7 +55,7 @@ export default function LoginForm () {
     }
 
     return <div className={styles.formBox}>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} onChange={() => setError(false)}>
             <div className={styles.inputBox}>
                 <div className= "relative">
                     <label>Username</label>
@@ -137,6 +139,9 @@ export default function LoginForm () {
                 { isRegister ? 'Register' : 'Login'}
             </Button>
         </form>
+        {error &&
+            <ErrorMessage error = 'User not foud'/>
+        }
         {
             !isRegister
                 ? <a className = "cursor-pointer hover:text-brand-cyan" onClick={toggleForm}>
@@ -150,4 +155,16 @@ export default function LoginForm () {
                 </a>
         }
     </div>
+}
+
+const ErrorMessage = ({ error }) => {
+    if (!error) {
+        return null
+    }
+
+    return (
+        <div className="text-red-500 text-sm font-medium">
+            {error}
+        </div>
+    )
 }
