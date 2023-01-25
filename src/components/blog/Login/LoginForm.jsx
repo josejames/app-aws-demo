@@ -11,6 +11,8 @@ import Button from '@components/blog/Login/Button'
 import { useAuth } from '@utils/auth-provider'
 // Next Js
 import { useRouter } from 'next/router'
+// Spinners
+import { TailSpin } from 'react-loader-spinner'
 
 export default function LoginForm () {
     const [username, setUsername] = useState('')
@@ -40,7 +42,7 @@ export default function LoginForm () {
                 await auth.registerUser(registerData)
                 router.push('/blog')
             } catch (error) {
-                console.log('error')
+                console.log('Error on the registration process')
             }
         }
     }
@@ -137,6 +139,12 @@ export default function LoginForm () {
             </div>
             <Button htmlType="submit">
                 { isRegister ? 'Register' : 'Login'}
+                {auth.fetchingUser && <TailSpin
+                    color='#51C9E4'
+                    width="24"
+                    height="24"
+                    wrapperStyle={{ position: 'absolute', left: '60%', bottom: '25%' }}
+                />}
             </Button>
         </form>
         {error &&
