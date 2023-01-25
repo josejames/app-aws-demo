@@ -15,7 +15,7 @@ const TextBox = ({ postId }) => {
         try {
             setLoading(true)
             // eslint-disable-next-line no-unused-vars
-            const res = await axios.post(`/posts/${postId}/comments`, formData)
+            const res = await axios.post(`/api/posts/${postId}/comments`, formData)
             setError(null)
             e.target.reset()
         } catch (error) {
